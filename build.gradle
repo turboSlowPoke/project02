@@ -17,7 +17,9 @@ apply plugin: 'io.spring.dependency-management'
 
 group = 'project02'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = 10
+sourceCompatibility = 9
+
+
 
 repositories {
     mavenCentral()
@@ -33,5 +35,8 @@ dependencies {
     compileOnly('org.projectlombok:lombok')
     compile("org.springframework.boot:spring-boot-starter-data-jpa")
     compileJava.options.encoding = 'UTF-8'
+    // https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api
+    compile group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.0'
+
 
 }
