@@ -45,7 +45,13 @@ var days=10;
 var hours=11;
 var minutes=12;
 var seconds=13;
-mainApp.controller('mainController',function ($scope,$interval) {
+var smsCodeElement="<div class=\"form-group row\">\n" +
+    "                        <label for=\"input_code\" class=\"col-sm-2 col-form-label\" >Код из SMS:</label>\n" +
+    "                        <div class=\"col-sm-10\">\n" +
+    "                            <input id=\"input_code\" type=\"number\" class=\"form-control\" name=\"smsCode\" ng-model=\"smsCode\">\n" +
+    "                        </div>\n" +
+    "                    </div>";
+mainApp.controller('mainController',function ($scope,$interval,$http) {
     var i=0;
     $scope.replic01=replics[0];
     $interval(function () {
@@ -102,6 +108,21 @@ mainApp.controller('mainController',function ($scope,$interval) {
             j=0;
         $scope.item=items[j];
     };
+    $scope.sendTestJson = function () {
+        var newUser = {
+            "name": $scope.name,
+            "email": $scope.email,
+            "phone": $scope.phone
+        };
+       $http.post('/add_user',newUser).then(function (response) {
+           console.log(response.data);
+           var user = response.data;
+           var mainForm = angular.element(document.querySelector('#mainForm'));
+           mainForm.children().remove();
+           mainForm.append(smsCodeElement);
+
+       });
+    }
 });
 
 

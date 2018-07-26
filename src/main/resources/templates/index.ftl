@@ -11,18 +11,18 @@
 <body ng-app="mainApp" ng-controller="mainController">
 <div id="modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
-        <form>
+        <form >
             <div class="modal-content">
                 <div class="modal-header">Заполните форму<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>
-                <div class="modal-body">
+                <div class="modal-body" id="mainForm">
                     <div class="form-group row">
-                    <label for="input_name" class="col-sm-2 col-form-label">Ваше имя:</label>
+                    <label for="input_name" class="col-sm-2 col-form-label" >Ваше имя:</label>
                     <div class="col-sm-10">
-                        <input id="input_name" type="text" class="form-control" placeholder="Имя">
+                        <input id="input_name" type="text" class="form-control" placeholder="Имя" name="name" ng-model="name">
                     </div>
                     </div>
                     <div class="form-group row">
-                        <label for="input_email" class="col-sm-2 col-form-label">Email:</label>
+                        <label for="input_email" class="col-sm-2 col-form-label" name="email" ng-model="email">Email:</label>
                         <div class="col-sm-10">
                             <input id="input_email" type="email" class="form-control" placeholder="email">
                         </div>
@@ -30,78 +30,81 @@
                     <div class="form-group row">
                         <label for="input_phone" class="col-sm-2 col-form-label">Мобильный телефон:</label>
                         <div class="col-sm-10">
-                            <input id="input_phone" type="text" class="form-control" placeholder="+79012345678">
+                            <input id="input_phone" type="text" class="form-control" placeholder="+79012345678" name="phone" ng-model="phone">
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-outline-danger">Отпрваить</button>
+                    <button class="btn btn-outline-danger"  ng-click="sendTestJson()">Отпрваить</button>
+                    {{username}}
                 </div>
             </div>
         </form>
     </div>
 </div>
-<div class="header pb-2">
 
-    <div class="left-column ">
-        {{replic01}}
-    </div>
-    <div class="right-column">
-        {{replic02}}
-    </div>
-    <div class="img_header">
-        <div class="img_header">
-            <a href="#" data-toggle="modal" data-target=#modal><div class="red_tablet"></div></a>
-            <a href="https://www.kinopoisk.ru/film/v-pogone-za-schastem-2006-104938/"><div class="blue_tablet"></div></a>
+    <div class="header pb-2">
+
+        <div class="left-column ">
+            {{replic01}}
         </div>
+        <div class="right-column">
+            {{replic02}}
+        </div>
+        <div class="img_header">
+            <div class="img_header">
+                <a href="#" data-toggle="modal" data-target=#modal><div class="red_tablet"></div></a>
+                <a href="https://www.kinopoisk.ru/film/v-pogone-za-schastem-2006-104938/"><div class="blue_tablet"></div></a>
+            </div>
+        </div>
+
     </div>
 
-</div>
-
-<div class="container-fluid head-timer align-content-center text-center text-white w-75 mx-auto border border-dark rounded-bottom rounded-5">
-    <div class="row pt-3">
-        <table class="table table-dark table-striped w-75 mx-auto shadow table-sm">
-            <thead>
-            <th>Масстер класс</th>
-            </thead>
-            <tbody>
-            <th>“3 стратегии, сделавших нас миллионерами на трендах 2017-2018гг”</th>
-            </tbody>
-        </table>
-    </div>
-    <div class="row mb-3">
-        <div class="col-md-6">
-            <p>До ближайшего мероприятия осталось:</p>
+    <div class="head-timer container-fluid  align-content-center text-center text-white w-75 mx-auto border border-dark rounded-bottom rounded-5">
+        <div class="row pt-3">
             <table class="table table-dark table-striped w-75 mx-auto shadow table-sm">
                 <thead>
-                <th>дни</th>
-                <td>часы</td>
-                <td>минуты</td>
-                <td>секунды</td>
+                <th>Масстер класс</th>
                 </thead>
                 <tbody>
-                <tr>
-                    <th>{{days}}</th>
-                    <td>{{hours}}</td>
-                    <td>{{minutes}}</td>
-                    <td>{{seconds}}</td>
-                </tr>
+                <th>“3 стратегии, сделавших нас миллионерами на трендах 2017-2018гг”</th>
                 </tbody>
             </table>
         </div>
-        <div class="col-md-6">
-            <p>Количество мест ограничено:</p>
-            <table class="table table-dark table-striped w-50 mx-auto shadow-lg table-sm">
-                <thead>
-                <th>осталось мест</th>
-                </thead>
-                <tbody>
-                <th>10</th>
-                </tbody>
-            </table>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <p>До ближайшего мероприятия осталось:</p>
+                <table class="table table-dark table-striped w-75 mx-auto shadow table-sm">
+                    <thead>
+                    <th>дни</th>
+                    <td>часы</td>
+                    <td>минуты</td>
+                    <td>секунды</td>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th>{{days}}</th>
+                        <td>{{hours}}</td>
+                        <td>{{minutes}}</td>
+                        <td>{{seconds}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-6">
+                <p>Количество мест ограничено:</p>
+                <table class="table table-dark table-striped w-50 mx-auto shadow-lg table-sm">
+                    <thead>
+                    <th>осталось мест</th>
+                    </thead>
+                    <tbody>
+                    <th>10</th>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-</div>
+
 
 <div class="container mt-5" >
     <div class="row">
