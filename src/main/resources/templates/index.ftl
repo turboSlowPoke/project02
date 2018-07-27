@@ -11,32 +11,37 @@
 <body ng-app="mainApp" ng-controller="mainController">
 <div id="modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
-        <form >
+        <form name="form" ng-submit="form.$valid && sendSubmit(auth)">
             <div class="modal-content">
                 <div class="modal-header">Заполните форму<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>
                 <div class="modal-body" id="mainForm">
                     <div class="form-group row">
                     <label for="input_name" class="col-sm-2 col-form-label" >Ваше имя:</label>
                     <div class="col-sm-10">
-                        <input id="input_name" type="text" class="form-control" placeholder="Имя" name="name" ng-model="name">
+                        <input id="input_name" type="text" class="form-control" placeholder="Имя" name="name" required ng-model="auth.name" >
                     </div>
                     </div>
                     <div class="form-group row">
-                        <label for="input_email" class="col-sm-2 col-form-label" name="email" ng-model="email">Email:</label>
+                        <label for="input_email" class="col-sm-2 col-form-label" >Email:</label>
                         <div class="col-sm-10">
-                            <input id="input_email" type="email" class="form-control" placeholder="email">
+                            <input id="input_email" required="email"  type="email" class="form-control" placeholder="email" ng-model="auth.email">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="input_phone" class="col-sm-2 col-form-label">Мобильный телефон:</label>
                         <div class="col-sm-10">
-                            <input id="input_phone" type="text" class="form-control" placeholder="+79012345678" name="phone" ng-model="phone">
+                            <input id="input_phone" type="text" class="form-control" placeholder="+79012345678" name="phone" ng-model="auth.phone" required>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label" for="recaptcha"></label>
+                        <div class="col-sm-10">
+                            <recapcha sitekey="6Ldhk2YUAAAAABtquHgbj6x9LjpmOKl1BTmwO4bK" ng-model="auth.recapcha"></recapcha>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-outline-danger"  ng-click="sendTestJson()">Отпрваить</button>
-                    {{username}}
+                    <button type="submit" class="btn btn-outline-danger" ng-disabled="form.$invalid">Отпрваить</button>
                 </div>
             </div>
         </form>
@@ -153,6 +158,7 @@
     <div class="footer copyrigt py-3 mt-3 text-light w-75 mx-auto rounded shadow"> © 2018 Copyright: ontvnotshow.com
     </div>
 </footer>
+<script src='https://www.google.com/recaptcha/api.js'></script>
 <script src="js/jquery-3.2.1.slim.min.js"></script>
 <script src="js/bootstrap.bundle.min.js"></script>
 <script src="js/angular.min.js"></script>

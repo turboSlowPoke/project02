@@ -51,6 +51,22 @@ var smsCodeElement="<div class=\"form-group row\">\n" +
     "                            <input id=\"input_code\" type=\"number\" class=\"form-control\" name=\"smsCode\" ng-model=\"smsCode\">\n" +
     "                        </div>\n" +
     "                    </div>";
+mainApp.directive("recapcha",function () {
+    return {
+        restrict:"E",
+        scope:{
+            sitekey:"@",
+            ngModel:"="
+        },
+        link: function (scope, element, attrs) {
+            var recapcha = document.createElement("script");
+            recapcha.type="text/javascript";
+            recapcha.async=true;
+            recapcha.src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit";
+            document.getElementsByTagName("head").append(recapcha);
+        }
+    }
+});
 mainApp.controller('mainController',function ($scope,$interval,$http) {
     var i=0;
     $scope.replic01=replics[0];
@@ -108,6 +124,11 @@ mainApp.controller('mainController',function ($scope,$interval,$http) {
             j=0;
         $scope.item=items[j];
     };
+    $scope.sendSubmit=function(auth){
+        $http.post('/regisration',auth);
+    };
+
+
     $scope.sendTestJson = function () {
         var newUser = {
             "name": $scope.name,
