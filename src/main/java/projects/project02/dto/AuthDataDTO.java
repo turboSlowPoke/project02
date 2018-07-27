@@ -1,10 +1,10 @@
-package projects.project02.entyties;
+package projects.project02.dto;
 
-public class AuthData {
+public class AuthDataDTO {
     private String name;
     private String email;
     private String phone;
-    private String recapcha;
+    private String recapchaResponse;
 
     @Override
     public String toString() {
@@ -12,16 +12,16 @@ public class AuthData {
                 "name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", phone='" + phone + '\'' +
-                ", recapcha='" + recapcha + '\'' +
+                ", recapchaResponse='" + recapchaResponse + '\'' +
                 '}';
     }
 
-    public String getRecapcha() {
-        return recapcha;
+    public String getRecapchaResponse() {
+        return recapchaResponse;
     }
 
-    public void setRecapcha(String recapcha) {
-        this.recapcha = recapcha;
+    public void setRecapchaResponse(String recapchaResponse) {
+        this.recapchaResponse = recapchaResponse;
     }
 
     public String getName() {

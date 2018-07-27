@@ -51,22 +51,7 @@ var smsCodeElement="<div class=\"form-group row\">\n" +
     "                            <input id=\"input_code\" type=\"number\" class=\"form-control\" name=\"smsCode\" ng-model=\"smsCode\">\n" +
     "                        </div>\n" +
     "                    </div>";
-mainApp.directive("recapcha",function () {
-    return {
-        restrict:"E",
-        scope:{
-            sitekey:"@",
-            ngModel:"="
-        },
-        link: function (scope, element, attrs) {
-            var recapcha = document.createElement("script");
-            recapcha.type="text/javascript";
-            recapcha.async=true;
-            recapcha.src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit";
-            document.getElementsByTagName("head").append(recapcha);
-        }
-    }
-});
+
 mainApp.controller('mainController',function ($scope,$interval,$http) {
     var i=0;
     $scope.replic01=replics[0];
@@ -125,7 +110,13 @@ mainApp.controller('mainController',function ($scope,$interval,$http) {
         $scope.item=items[j];
     };
     $scope.sendSubmit=function(auth){
-        $http.post('/regisration',auth);
+        $http.post('/regisration',auth).then(
+            function (data) {
+                window.alert("registred!");
+            },
+            function (error) {
+                window.alert("ERROR");
+            })
     };
 
 
@@ -143,6 +134,36 @@ mainApp.controller('mainController',function ($scope,$interval,$http) {
            mainForm.append(smsCodeElement);
 
        });
+    }
+}).directive("recapcha",function () {
+    return {
+        restrict:"E",
+        require:"ngModel",
+        scope:{
+            sitekey:"@",
+            ngModel:"="
+        },
+        link: function (scope, element, attrs,ngModelCtrl) {
+            window.onLoadRecapchaCallback = function () {
+                grecaptcha.render(element.get(0),{
+                    "sitekey":scope.sitekey,
+                    "callback":onRecapchaSubmit,
+                    "expired-callback":onRecaptchaExpired
+                });
+            };
+            window.onRecapchaSubmit = function (gRecaptchaResponse) {
+                scope.ngModel=gRecaptchaResponse;
+                ngModelCtrl.$setViewValue(gRecaptchaResponse);
+            };
+            window.onRecaptchaExpired = function () {
+                scope.ngModel="";
+                ngModelCtrl.$setViewValue("");
+
+            };
+            ngModelCtrl.$validators.recaptchaValidate=function (modelValue, viewValue) {
+                return !ngModelCtrl.$isEmpty(scope.ngModel);
+            };
+        }
     }
 });
 
