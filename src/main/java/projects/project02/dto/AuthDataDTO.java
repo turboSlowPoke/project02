@@ -1,5 +1,8 @@
 package projects.project02.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class AuthDataDTO {
     private String name;
     private String email;

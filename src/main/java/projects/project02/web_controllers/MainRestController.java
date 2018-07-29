@@ -18,7 +18,8 @@ public class MainRestController {
 
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = "/regisration", method = RequestMethod.POST)
-    public void registration(@RequestBody AuthDataDTO authDataDTO){
+    public void registration(AuthDataDTO authDataDTO){
+        System.out.println(authDataDTO);
         ReCaptchaResponseDTO reCaptchaResponse = reCaptchaApiClient.verify(authDataDTO.getRecapchaResponse());
         System.out.println(reCaptchaResponse);
         if (!reCaptchaResponse.isSuccess())

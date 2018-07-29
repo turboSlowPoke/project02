@@ -20,19 +20,28 @@
                     <div class="form-group row">
                     <label for="input_name" class="col-sm-2 col-form-label" >Ваше имя:</label>
                     <div class="col-sm-10">
-                        <input id="input_name" type="text" class="form-control" placeholder="Имя" name="name" required ng-model="auth.name" >
+                        <input id="input_name" type="text" class="form-control" placeholder="Имя" name="name" required ng-model="auth.name" ng-pattern="/^[A-Za-zа-яА-ЯёЁ]*$/">
+                        <span style="color: red" ng-show="form.name.$touched && form.name.$invalid">не корректное имя</span>
                     </div>
                     </div>
                     <div class="form-group row">
                         <label for="input_email" class="col-sm-2 col-form-label" >Email:</label>
                         <div class="col-sm-10">
-                            <input id="input_email" required="email"  type="email" class="form-control" placeholder="email" ng-model="auth.email">
+                            <input id="input_email" required name="email"  type="email" class="form-control" placeholder="email" ng-model="auth.email"
+                                   ng-pattern="regexEmail">
+                            <span style="color: red" ng-show="form.email.$touched && form.email.$invalid">не корректный email</span>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="input_phone" class="col-sm-2 col-form-label">Мобильный телефон:</label>
                         <div class="col-sm-10">
-                            <input id="input_phone" type="text" class="form-control" placeholder="+79012345678" name="phone" ng-model="auth.phone" required>
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">+7</div>
+                                </div>
+                            <input id="input_phone" type="text" class="form-control" placeholder="9012345678" name="phone" ng-model="auth.phone" required ng-pattern="/[9][0-9]{9,9}$/">
+                            </div>
+                            <span style="color: red" ng-show="form.phone.$touched && form.phone.$invalid">не корректный номер</span>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -41,9 +50,10 @@
                             <recapcha sitekey="6Ldhk2YUAAAAABtquHgbj6x9LjpmOKl1BTmwO4bK" ng-model="auth.recapchaResponse"></recapcha>
                         </div>
                     </div>
+                    <input id="csrf" type="hidden"  name="_csrf" value="${_csrf.token}" ng-model="auth._csrf">
                 </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-danger" ng-disabled="form.$invalid">Отпрваить</button>
+                <div class="modal-footer ">
+                    <button type="submit" class="btn btn-danger mx-auto" ng-disabled="form.$invalid">Отпрваить</button>
                 </div>
             </div>
         </form>

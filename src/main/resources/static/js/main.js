@@ -54,6 +54,7 @@ var smsCodeElement="<div class=\"form-group row\">\n" +
 
 mainApp.controller('mainController',function ($scope,$interval,$http) {
     var i=0;
+    $scope.regexEmail=/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     $scope.replic01=replics[0];
     $interval(function () {
         if (i < replics.length - 1)
@@ -110,13 +111,13 @@ mainApp.controller('mainController',function ($scope,$interval,$http) {
         $scope.item=items[j];
     };
     $scope.sendSubmit=function(auth){
-        $http.post('/regisration',auth).then(
-            function (data) {
-                window.alert("registred!");
-            },
-            function (error) {
-                window.alert("ERROR");
-            })
+        $scope.auth._csrf= $("#csrf").val();
+        $http({
+            method: "POST",
+            url:"/regisration",
+            data: $.param(auth),
+            headers: {"Content-Type":"application/x-www-form-urlencoded"}
+        });
     };
 
 
@@ -126,15 +127,16 @@ mainApp.controller('mainController',function ($scope,$interval,$http) {
             "email": $scope.email,
             "phone": $scope.phone
         };
-       $http.post('/add_user',newUser).then(function (response) {
-           console.log(response.data);
-           var user = response.data;
-           var mainForm = angular.element(document.querySelector('#mainForm'));
-           mainForm.children().remove();
-           mainForm.append(smsCodeElement);
 
-       });
-    }
+       // $http.post('/add_user',newUser).then(function (response) {
+       //     console.log(response.data);
+       //     var user = response.data;
+       //     var mainForm = angular.element(document.querySelector('#mainForm'));
+       //     mainForm.children().remove();
+       //     mainForm.append(smsCodeElement);
+       //
+       // });
+    };
 }).directive("recapcha",function () {
     return {
         restrict:"E",
