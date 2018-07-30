@@ -7,39 +7,37 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <script src="https://www.google.com/recaptcha/api.js?onload=onLoadRecapchaCallback&render=explicit" async defer></script>
 
 </head>
 <body ng-app="mainApp" ng-controller="mainController">
 <div id="modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <form name="form" ng-submit="form.$valid && sendSubmit(auth)">
+    <div class="modal-dialog modal-lg" id="mainDialog">
+        <form name="form" ng-submit="form.$valid && sendSubmit(auth)" ng-show="mainFormIsShow">
             <div class="modal-content">
                 <div class="modal-header">Заполните форму<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>
                 <div class="modal-body" id="mainForm">
                     <div class="form-group row">
                     <label for="input_name" class="col-sm-2 col-form-label" >Ваше имя:</label>
                     <div class="col-sm-10">
-                        <input id="input_name" type="text" class="form-control" placeholder="Имя" name="name" required ng-model="auth.name" ng-pattern="/^[A-Za-zа-яА-ЯёЁ]*$/">
+                        <input id="input_name" type="text" class="form-control" placeholder="Имя" name="name" required ng-model="auth.name" ng-pattern="/^[A-Za-zа-яА-ЯёЁ]{4,50}$/">
                         <span style="color: red" ng-show="form.name.$touched && form.name.$invalid">не корректное имя</span>
                     </div>
                     </div>
                     <div class="form-group row">
                         <label for="input_email" class="col-sm-2 col-form-label" >Email:</label>
                         <div class="col-sm-10">
-                            <input id="input_email" required name="email"  type="email" class="form-control" placeholder="email" ng-model="auth.email"
-                                   ng-pattern="regexEmail">
+                            <input id="input_email" required name="email"  type="email" class="form-control" placeholder="email" ng-model="auth.email" ng-minlength="4" ng-maxlength="50" ng-pattern="regexEmail">
                             <span style="color: red" ng-show="form.email.$touched && form.email.$invalid">не корректный email</span>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="input_phone" class="col-sm-2 col-form-label">Мобильный телефон:</label>
+                        <label for="input_phone" class="col-sm-2 col-form-label" >Мобильный телефон:</label>
                         <div class="col-sm-10">
                             <div class="input-group mb-2">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text">+7</div>
                                 </div>
-                            <input id="input_phone" type="text" class="form-control" placeholder="9012345678" name="phone" ng-model="auth.phone" required ng-pattern="/[9][0-9]{9,9}$/">
+                            <input id="input_phone" type="text" class="form-control" placeholder="9012345678" name="phone" ng-model="auth.phone" required ng-pattern="/[9][0-9]{9}$/">
                             </div>
                             <span style="color: red" ng-show="form.phone.$touched && form.phone.$invalid">не корректный номер</span>
                         </div>
@@ -48,12 +46,31 @@
                         <label class="col-sm-2 col-form-label" for="recaptcha"></label>
                         <div class="col-sm-10">
                             <recapcha sitekey="6Ldhk2YUAAAAABtquHgbj6x9LjpmOKl1BTmwO4bK" ng-model="auth.recapchaResponse"></recapcha>
+                            <script src="https://www.google.com/recaptcha/api.js?onload=onLoadRecapchaCallback&render=explicit" async defer></script>
                         </div>
                     </div>
                     <input id="csrf" type="hidden"  name="_csrf" value="${_csrf.token}" ng-model="auth._csrf">
                 </div>
                 <div class="modal-footer ">
                     <button type="submit" class="btn btn-danger mx-auto" ng-disabled="form.$invalid">Отпрваить</button>
+                </div>
+            </div>
+        </form>
+        <form name="confirmForm" ng-submit="confirmForm.$valid && sendConfirm(confirm)" ng-show="confirmFromIsShow">
+            <div class="modal-content">
+                <div class="modal-header">Подтверждение<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>
+                <div class="modal-body">
+                    <div class="form-group row">
+                        <label for="input_code" class="col-sm-2 col-form-label" >Введите код из SMS:</label>
+                        <div class="col-sm-10">
+                            <input id="input_code" type="text" class="form-control" placeholder="123456" name="code" required ng-model="confirm.code" ng-pattern="/^[0-9]{6}$/">
+                            <span style="color: red" ng-show="confirmForm.code.$touched && confirmForm.code.$invalid">не корректный код</span>
+                        </div>
+                    </div>
+                    <input id="csrf" type="hidden"  name="_csrf" value="${_csrf.token}" ng-model="auth._csrf">
+                </div>
+                <div class="modal-footer ">
+                    <button type="submit" class="btn btn-danger mx-auto" ng-disabled="confirmForm.$invalid">Отпрваить</button>
                 </div>
             </div>
         </form>

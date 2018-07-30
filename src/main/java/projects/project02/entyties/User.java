@@ -2,10 +2,9 @@ package projects.project02.entyties;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
+import org.springframework.stereotype.Component;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
@@ -18,13 +17,14 @@ public class User implements Serializable {
     private Integer id;
     @Size(min = 4, max = 50)
     private String name;
-    @Email
+    @Email @Column(unique = true)
     private String email;
-    @Size(min = 10,max = 20)
+    @Size(max = 20) @Column(unique = true)
     private String phone;
     private LocalDateTime registrationDate;
     private Integer smsCode;
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private UserStatus status;
 
     @Override
     public String toString() {
@@ -35,7 +35,7 @@ public class User implements Serializable {
                 ", phone='" + phone + '\'' +
                 ", registrationDate=" + registrationDate +
                 ", smsCode=" + smsCode +
-                ", status='" + status + '\'' +
+                ", status=" + status +
                 '}';
     }
 
@@ -87,11 +87,11 @@ public class User implements Serializable {
         this.smsCode = smsCode;
     }
 
-    public String getStatus() {
+    public UserStatus getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(UserStatus status) {
         this.status = status;
     }
 }
