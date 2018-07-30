@@ -19,7 +19,7 @@
                     <div class="form-group row">
                     <label for="input_name" class="col-sm-2 col-form-label" >Ваше имя:</label>
                     <div class="col-sm-10">
-                        <input id="input_name" type="text" class="form-control" placeholder="Имя" name="name" required ng-model="auth.name" ng-pattern="/^[A-Za-zа-яА-ЯёЁ]{4,50}$/">
+                        <input id="input_name" type="text" class="form-control" placeholder="Имя" name="name" required ng-model="auth.name" ng-pattern="/^[A-Za-zа-яА-ЯёЁ]{4,50}\s{0,1}[A-Za-zа-яА-ЯёЁ]{0,50}\s{0,1}[A-Za-zа-яА-ЯёЁ]{0,50}$/">
                         <span style="color: red" ng-show="form.name.$touched && form.name.$invalid">не корректное имя</span>
                     </div>
                     </div>
@@ -46,7 +46,6 @@
                         <label class="col-sm-2 col-form-label" for="recaptcha"></label>
                         <div class="col-sm-10">
                             <recapcha sitekey="6Ldhk2YUAAAAABtquHgbj6x9LjpmOKl1BTmwO4bK" ng-model="auth.recapchaResponse"></recapcha>
-                            <script src="https://www.google.com/recaptcha/api.js?onload=onLoadRecapchaCallback&render=explicit" async defer></script>
                         </div>
                     </div>
                     <input id="csrf" type="hidden"  name="_csrf" value="${_csrf.token}" ng-model="auth._csrf">
@@ -192,5 +191,7 @@
 <script src="js/bootstrap.bundle.min.js"></script>
 <script src="js/angular.min.js"></script>
 <script src="js/main.js"></script>
+<script src="https://www.google.com/recaptcha/api.js?onload=onLoadRecapchaCallback&render=explicit" async defer></script>
+
 </body>
 </html>

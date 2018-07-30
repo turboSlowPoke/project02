@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 public class User implements Serializable {
     @Id @GeneratedValue
     private Integer id;
-    @Size(min = 4, max = 50)
+    @Size(min = 4, max = 200)
     private String name;
     @Email @Column(unique = true)
     private String email;

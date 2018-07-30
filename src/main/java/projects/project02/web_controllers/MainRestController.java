@@ -41,12 +41,11 @@ public class MainRestController {
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = "/regisration", method = RequestMethod.POST)
     public AuthStatusResponseDTO registration(AuthDataDTO authDataDTO, HttpServletRequest request){
-        System.out.println(authDataDTO);
-//        ReCaptchaResponseDTO reCaptchaResponse = reCaptchaApiClient.verify(authDataDTO.getRecapchaResponse());
-//        if (reCaptchaResponse.isSuccess()) {
-//            logger.warn("Некорректная капча с ip: "+request.getRemoteAddr());
-//            throw new BadCaptchaRuntimeException();
-//        }
+        ReCaptchaResponseDTO reCaptchaResponse = reCaptchaApiClient.verify(authDataDTO.getRecapchaResponse());
+        if (!reCaptchaResponse.isSuccess()) {
+            logger.warn("Некорректная капча с ip: "+request.getRemoteAddr());
+            throw new BadCaptchaRuntimeException();
+        }
         if (authDataValidator.nameIsInvalid(authDataDTO.getName())) {
             logger.warn("Некорректное имя в запросе: " +authDataDTO.getName()+", пришло с ip: "+request.getRemoteAddr());
             throw new BadAuthDataRuntimeException();
@@ -81,8 +80,9 @@ public class MainRestController {
                     user.setRegistrationDate(LocalDateTime.now());
                     user.setSmsCode(genratorCodeForSms.getCodeFoSms());
                     user.setStatus(UserStatus.CREATED);
-                    userRepository.save(user);
+                    user=userRepository.save(user);
                     logger.info("Сохранён новый пользователь " +user);
+                    request.getSession().setAttribute("userId",user.getId());
                     responseDTO.setStatus("ok");
                     responseDTO.setMessage("code:"+user.getSmsCode());
                 });
@@ -92,10 +92,17 @@ public class MainRestController {
 
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = "/confirm", method = RequestMethod.POST)
-    public AuthStatusResponseDTO confirmSms(ConfirmSmsDTO confirmSmsDTO){
-        System.out.println("confirmSms:"+confirmSmsDTO);
+    public AuthStatusResponseDTO confirmSms(ConfirmSmsDTO confirmSmsDTO,HttpServletRequest request){
+        if (authDataValidator.smsCodeIsInValid(confirmSmsDTO.getCode())){
+            logger.warn("Невалидный код из sms:"+confirmSmsDTO.getCode()+", пришел с Ip:"+request.getRemoteAddr());
+            throw new BadAuthDataRuntimeException();
+        }
+        if (request.getSession().getAttribute("userId")==null){
+            logger.warn("К сесси не прикреплен атрибут с userId, пришел с Ip:"+request.getRemoteAddr());
+            throw new BadAuthDataRuntimeException();
+        }
         responseDTO.setStatus("ok");
-        responseDTO.setMessage("lalalala");
+        responseDTO.setMessage("Вы зарегистрированы!");
         logger.info(""+confirmSmsDTO);
         return responseDTO;
     }
