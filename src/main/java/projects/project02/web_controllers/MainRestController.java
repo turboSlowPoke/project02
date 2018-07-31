@@ -41,11 +41,11 @@ public class MainRestController {
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = "/regisration", method = RequestMethod.POST)
     public AuthStatusResponseDTO registration(AuthDataDTO authDataDTO, HttpServletRequest request){
-        ReCaptchaResponseDTO reCaptchaResponse = reCaptchaApiClient.verify(authDataDTO.getRecapchaResponse());
-        if (!reCaptchaResponse.isSuccess()) {
-            logger.warn("Некорректная капча с ip: "+request.getRemoteAddr());
-            throw new BadCaptchaRuntimeException();
-        }
+//        ReCaptchaResponseDTO reCaptchaResponse = reCaptchaApiClient.verify(authDataDTO.getRecapchaResponse());
+//        if (!reCaptchaResponse.isSuccess()) {
+//            logger.warn("Некорректная капча с ip: "+request.getRemoteAddr());
+//            throw new BadCaptchaRuntimeException();
+//        }
         if (authDataValidator.nameIsInvalid(authDataDTO.getName())) {
             logger.warn("Некорректное имя в запросе: " +authDataDTO.getName()+", пришло с ip: "+request.getRemoteAddr());
             throw new BadAuthDataRuntimeException();
@@ -62,11 +62,11 @@ public class MainRestController {
         optionalUser.ifPresentOrElse(
                 user -> {
                     if (user.getStatus()== UserStatus.CONFIRMED) {
-                        logger.info("Предоставлены данные уже существующего пользователя, " + user);
+                        logger.info("Предоставлены данные:"+authDataDTO+" уже существующего пользователя:" + user);
                         responseDTO.setStatus("error");
                         responseDTO.setMessage("Пользователь с таким телефоном и/или почтой уже зарегистрировался");
                     }else {
-                        user.setSmsCode(genratorCodeForSms.getCodeFoSms());
+                        user.setSmsCode(""+genratorCodeForSms.getCodeFoSms());
                         userRepository.save(user);
                         responseDTO.setStatus("ok");
                         responseDTO.setMessage("code:"+user.getSmsCode());
@@ -78,13 +78,13 @@ public class MainRestController {
                     user.setEmail(authDataDTO.getEmail());
                     user.setPhone(authDataDTO.getPhone());
                     user.setRegistrationDate(LocalDateTime.now());
-                    user.setSmsCode(genratorCodeForSms.getCodeFoSms());
+                    user.setSmsCode(""+genratorCodeForSms.getCodeFoSms());
                     user.setStatus(UserStatus.CREATED);
                     user=userRepository.save(user);
                     logger.info("Сохранён новый пользователь " +user);
                     request.getSession().setAttribute("userId",user.getId());
                     responseDTO.setStatus("ok");
-                    responseDTO.setMessage("code:"+user.getSmsCode());
+                    responseDTO.setMessage("");
                 });
 
         return responseDTO;
@@ -101,9 +101,24 @@ public class MainRestController {
             logger.warn("К сесси не прикреплен атрибут с userId, пришел с Ip:"+request.getRemoteAddr());
             throw new BadAuthDataRuntimeException();
         }
-        responseDTO.setStatus("ok");
-        responseDTO.setMessage("Вы зарегистрированы!");
-        logger.info(""+confirmSmsDTO);
+        logger.info("Пришел :"+confirmSmsDTO);
+        Optional<User> optionalUser=userRepository.findById((Integer)request.getSession().getAttribute("userId"));
+        optionalUser.ifPresentOrElse(
+                user -> {
+                    if(confirmSmsDTO.getCode().equals(user.getSmsCode())) {
+                        responseDTO.setStatus("ok");
+                        responseDTO.setMessage("Вы зарегистрированы!");
+                        user.setStatus(UserStatus.CONFIRMED);
+                        userRepository.save(user);
+                        logger.info("Успешно зарегистрировался юзер: "+user);
+                    }else {
+                        responseDTO.setStatus("error");
+                        responseDTO.setMessage("Вы ввели не правильный код,попробуйте еще раз");
+                    }
+                },
+                ()->{
+                    throw new BadAuthDataRuntimeException();
+                });
         return responseDTO;
     }
 

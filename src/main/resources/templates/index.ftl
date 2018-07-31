@@ -16,6 +16,7 @@
             <div class="modal-content">
                 <div class="modal-header">Заполните форму<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>
                 <div class="modal-body" id="mainForm">
+                    <div class="alert-danger p-2 text-center text-danger my-1" ng-show="badAuthData">{{statusResponseMessage}}</div>
                     <div class="form-group row">
                     <label for="input_name" class="col-sm-2 col-form-label" >Ваше имя:</label>
                     <div class="col-sm-10">
@@ -62,7 +63,9 @@
                     <div class="form-group row">
                         <label for="input_code" class="col-sm-2 col-form-label" >Введите код из SMS:</label>
                         <div class="col-sm-10">
+                            <div class="alert-danger p-2 text-center text-danger" ng-show="badCode">{{statusResponseMessage}}</div>
                             <input id="input_code" type="text" class="form-control" placeholder="123456" name="code" required ng-model="confirm.code" ng-pattern="/^[0-9]{6}$/">
+
                             <span style="color: red" ng-show="confirmForm.code.$touched && confirmForm.code.$invalid">не корректный код</span>
                         </div>
                     </div>
@@ -73,6 +76,17 @@
                 </div>
             </div>
         </form>
+        <div class="modal-content" ng-show="succesMessageShow">
+            <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>
+            <div class="modal-body">
+                <div class="alert-info py-3 text-center">
+                    <h5>{{statusResponseMessage}}</h5>
+                </div>
+            </div>
+            <div class="modal-footer ">
+                <button class="btn btn-primary mx-auto" type="button" data-dismiss="modal">Закрыть</button>
+            </div>
+        </div>
     </div>
 </div>
 

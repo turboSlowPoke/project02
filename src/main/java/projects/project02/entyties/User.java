@@ -22,7 +22,7 @@ public class User implements Serializable {
     @Size(max = 20) @Column(unique = true)
     private String phone;
     private LocalDateTime registrationDate;
-    private Integer smsCode;
+    private String smsCode;
     @Enumerated(EnumType.STRING)
     private UserStatus status;
 
@@ -79,11 +79,11 @@ public class User implements Serializable {
         this.registrationDate = registrationDate;
     }
 
-    public Integer getSmsCode() {
+    public String getSmsCode() {
         return smsCode;
     }
 
-    public void setSmsCode(Integer smsCode) {
+    public void setSmsCode(String smsCode) {
         this.smsCode = smsCode;
     }
 

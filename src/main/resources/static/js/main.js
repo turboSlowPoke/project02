@@ -45,28 +45,9 @@ var days=10;
 var hours=11;
 var minutes=12;
 var seconds=13;
-var smsCodeElement="<form name=\"confirmForm\" ng-submit=\"form.$valid && sendConfirm(confirm)\">\n" +
-    "    <div class=\"modal-content\">\n" +
-    "        <div class=\"modal-header\">Подтверждение<button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button></div>\n" +
-    "        <div class=\"modal-body\">\n" +
-    "            <div class=\"form-group row\">\n" +
-    "                <label for=\"input_code\" class=\"col-sm-2 col-form-label\" >Введите код из SMS:</label>\n" +
-    "                <div class=\"col-sm-10\">\n" +
-    "                    <input id=\"input_code\" type=\"text\" class=\"form-control\" placeholder=\"123456\" name=\"code\" required ng-model=\"confirm.code\" ng-pattern=\"/^[0-9]{6}$/\">\n" +
-    "                    <span style=\"color: red\" ng-show=\"form.code.$touched && form.code.$invalid\">не корректный код</span>\n" +
-    "                </div>\n" +
-    "            </div>\n" +
-    "            <input id=\"csrf\" type=\"hidden\"  name=\"_csrf\" value=\"${_csrf.token}\" ng-model=\"auth._csrf\">\n" +
-    "        </div>\n" +
-    "        <div class=\"modal-footer \">\n" +
-    "            <button type=\"submit\" class=\"btn btn-danger mx-auto\" ng-disabled=\"form.$invalid\">Отпрваить</button>\n" +
-    "        </div>\n" +
-    "    </div>\n" +
-    "</form>";
 
 mainApp.controller('mainController',function ($scope,$interval,$http) {
     var i=0;
-    $scope.mainFormIsShow=true;
     $scope.regexEmail=/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
     $scope.replic01=replics[0];
@@ -124,6 +105,9 @@ mainApp.controller('mainController',function ($scope,$interval,$http) {
             j=0;
         $scope.item=items[j];
     };
+    $scope.mainFormIsShow=true;
+    $scope.confirmFromIsShow=false;
+    $scope.succesMessageShow=false;
     $scope.sendSubmit=function(auth){
         $scope.auth._csrf= $("#csrf").val();
         $http({
@@ -132,13 +116,18 @@ mainApp.controller('mainController',function ($scope,$interval,$http) {
             data: $.param(auth),
             headers: {"Content-Type":"application/x-www-form-urlencoded"}
         }).then(function (response) {
-            console.log("ok");
             console.log(response.data);
-            $scope.mainFormIsShow=false;
-            $scope.confirmFromIsShow=true;
-            // var mainDialog = angular.element(document.querySelector('#mainDialog'));
-            // mainDialog.children().remove();
-            // mainDialog.append(smsCodeElement);
+            if (response.data.status==="ok") {
+                $scope.mainFormIsShow = false;
+                $scope.confirmFromIsShow = true;
+                $scope.succesMessageShow = false;
+            }else{
+                $scope.badAuthData=true;
+                $scope.statusResponseMessage=response.data.message;
+                $scope.mainFormIsShow=true;
+                $scope.confirmFromIsShow=false;
+                $scope.succesMessageShow=false;
+            }
         }, function (response) {
             console.log("error");
             console.log(response.data)
@@ -154,20 +143,24 @@ mainApp.controller('mainController',function ($scope,$interval,$http) {
         }).then(function (response) {
             console.log("ok");
             console.log(response.data);
+            if (response.data.status==="ok") {
+                $scope.mainFormIsShow = false;
+                $scope.confirmFromIsShow = false;
+                $scope.succesMessageShow = true;
+                $scope.statusResponseMessage = response.data.message;
+            }else{
+                $scope.mainFormIsShow = false;
+                $scope.confirmFromIsShow = true;
+                $scope.badCode=true;
+                $scope.succesMessageShow = false;
+                $scope.statusResponseMessage = response.data.message;
+            }
+
         }, function (response) {
             console.log("error");
             console.log(response.data)
         })
     }
-
-       // $http.post('/add_user',newUser).then(function (response) {
-       //     console.log(response.data);
-       //     var user = response.data;
-       //     var mainForm = angular.element(document.querySelector('#mainForm'));
-       //     mainForm.children().remove();
-       //     mainForm.append(smsCodeElement);
-       //
-       // });
 }).directive("recapcha",function () {
     return {
         restrict:"E",
