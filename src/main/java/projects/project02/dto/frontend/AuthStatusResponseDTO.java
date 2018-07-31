@@ -1,4 +1,4 @@
-package projects.project02.dto;
+package projects.project02.dto.frontend;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import org.springframework.stereotype.Component;

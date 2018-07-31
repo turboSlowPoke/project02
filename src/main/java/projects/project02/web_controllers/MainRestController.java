@@ -7,16 +7,16 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import projects.project02.data_repository.UserRepository;
-import projects.project02.dto.AuthDataDTO;
-import projects.project02.dto.AuthStatusResponseDTO;
-import projects.project02.dto.ConfirmSmsDTO;
-import projects.project02.dto.ReCaptchaResponseDTO;
+import projects.project02.dto.frontend.AuthDataDTO;
+import projects.project02.dto.frontend.AuthStatusResponseDTO;
+import projects.project02.dto.frontend.ConfirmSmsDTO;
 import projects.project02.entyties.User;
 import projects.project02.entyties.UserStatus;
 import projects.project02.exceptions.BadAuthDataRuntimeException;
 import projects.project02.exceptions.BadCaptchaRuntimeException;
 import projects.project02.services.GenratorCodeForSms;
 import projects.project02.services.ReCaptchaApiClient;
+import projects.project02.services.SmsService;
 import projects.project02.validators.AuthDataValidator;
 
 import javax.servlet.http.HttpServletRequest;
@@ -36,6 +36,8 @@ public class MainRestController {
     private AuthStatusResponseDTO responseDTO;
     @Autowired
     private GenratorCodeForSms genratorCodeForSms;
+    @Autowired
+    private SmsService smsService;
 
 
     @ResponseStatus(HttpStatus.OK)
@@ -83,6 +85,7 @@ public class MainRestController {
                     user=userRepository.save(user);
                     logger.info("Сохранён новый пользователь " +user);
                     request.getSession().setAttribute("userId",user.getId());
+                    smsService.sendSms(user.getSmsCode(),user.getId(),user.getPhone());
                     responseDTO.setStatus("ok");
                     responseDTO.setMessage("");
                 });

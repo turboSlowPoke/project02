@@ -1,4 +1,4 @@
-package projects.project02.dto;
+package projects.project02.dto.frontend;
 
 public class ConfirmSmsDTO {
     private String code;

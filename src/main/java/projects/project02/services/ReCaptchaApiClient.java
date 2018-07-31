@@ -1,12 +1,11 @@
 package projects.project02.services;
 
 import lombok.NonNull;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
-import projects.project02.dto.ReCaptchaResponseDTO;
+import projects.project02.dto.grecaptcha_api.ReCaptchaResponseDTO;
 
 @Component
 public class ReCaptchaApiClient {
