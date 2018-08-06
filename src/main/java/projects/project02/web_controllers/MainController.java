@@ -18,8 +18,13 @@ public class MainController {
 
     @GetMapping("/page02")
     public ModelAndView getSecondPage(ModelAndView view){
-        view.getModel().put("userName","Dfyz");
         view.setViewName("page02");
+        return view;
+    }
+
+    @GetMapping("/admin")
+    public ModelAndView getAdminPage(ModelAndView view){
+        view.setViewName("admin_page");
         return view;
     }
 }

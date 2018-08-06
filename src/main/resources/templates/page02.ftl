@@ -1258,7 +1258,7 @@
 
 <script src="js/jquery-3.2.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
-<script src="js/bootstrap.bundle.min.js"></script>
+<#--<script src="js/bootstrap.bundle.min.js"></script>-->
 <script src="js/angular.min.js"></script>
 <script src="js/main.js"></script>
 <script src="js/timer.js"></script>
