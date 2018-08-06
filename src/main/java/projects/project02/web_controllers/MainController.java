@@ -12,8 +12,14 @@ public class MainController {
     @GetMapping("/")
     public ModelAndView getIndexPage(ModelAndView view){
         view.getModel().put("userName","Dfyz");
-        view.setViewName("index");
+        view.setViewName("page01");
         return view;
     }
 
+    @GetMapping("/page02")
+    public ModelAndView getSecondPage(ModelAndView view){
+        view.getModel().put("userName","Dfyz");
+        view.setViewName("page02");
+        return view;
+    }
 }

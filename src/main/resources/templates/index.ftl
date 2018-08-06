@@ -45,7 +45,7 @@
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label" for="recaptcha"></label>
-                        <div class="col-sm-10">
+                        <div class="col-sm-10 bg-light">
                             <recapcha sitekey="6Ldhk2YUAAAAABtquHgbj6x9LjpmOKl1BTmwO4bK" ng-model="auth.recapchaResponse"></recapcha>
                         </div>
                     </div>

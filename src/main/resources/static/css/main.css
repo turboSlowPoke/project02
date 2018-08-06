@@ -1,28 +1,16 @@
-.header{
-    background-color: #000000; /*url("../images/morpheu_obrez.jpg");*/
-    box-shadow: 6px 6px 3px grey;
+body{
+    background: black;
+    height: 100%;
 }
-.morhios{
-    margin: auto;
-}
-.head-title{
-    text-align: center;
-    background: #5a6268;
-    color: white;
-    padding-top: 0.5%;
-    padding-bottom: 1px;
-}
-.replic{
-    color: white;
-    opacity: 0.8;
-}
-.img_header{
+
+
+.morfius{
     position: relative;
     width: 516px;
     height: 438px;
     background-image: url("../images/morpheu.jpg");
     background-repeat: no-repeat;
-    margin: auto;
+    margin: 5% auto;
 }
 .red_tablet{
     /*background: red;*/
@@ -41,37 +29,34 @@
     margin-left: 77%;
 }
 
-.left-column{
-    text-align: center;
+.title{
+    color: green;
+    width: 70%;
+}
+.text-green{
+    color: green;
+}
+.bg-black{
+    background: #141413;
+    /*-webkit-box-shadow: 15px 10px 50px -14px rgba(255,255,255,0.75);*/
+    /*-moz-box-shadow: 15px 10px 50px -14px rgba(255,255,255,0.75);*/
+    /*box-shadow: 15px 10px 50px -14px rgba(255,255,255,0.75);*/
+}
+.bg-black2{
     color: white;
-    float: left;
-    width: 20%;
-    margin-left: 5%;
-    opacity: 0.89;
-    padding-top: 7%;
-}
-.right-column{
+    width: 50%;
+    margin: 5% auto;
+    padding: 5%;
     text-align: center;
-    color: white;
-    float: right;
-    width: 20%;
-    margin-right: 5%;
-    opacity: 0.89;
-    padding-top: 7%;
+    background: #141413;
+    /*-webkit-box-shadow: 15px 10px 50px -14px rgba(255,255,255,0.75);*/
+    /*-moz-box-shadow: 15px 10px 50px -14px rgba(255,255,255,0.75);*/
+    /*box-shadow: 15px 10px 50px -14px rgba(255,255,255,0.75);*/
 }
-.head-timer{
-    background: #5a6268;
-    box-shadow: 6px 6px 3px grey;
-    border: 5px solid black;
-    /*opacity: 0.8;*/
-}
-footer{
-    background: #5a6268;
-}
-.btn-footer:hover{
-    color: black;
 
-}
-.footer{
-    background: black;
+
+.myshadow{
+    -webkit-box-shadow: 5px -2px 123px -22px rgba(255,255,255,1);
+    -moz-box-shadow: 5px -2px 123px -22px rgba(255,255,255,1);
+    box-shadow: 5px -2px 123px -22px rgba(255,255,255,1);
 }
