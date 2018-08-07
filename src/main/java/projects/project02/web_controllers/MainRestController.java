@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import projects.project02.data_repository.UserRepository;
 import projects.project02.dto.frontend.AuthDataDTO;
-import projects.project02.dto.frontend.AuthStatusResponseDTO;
+import projects.project02.dto.frontend.StatusResponseDTO;
 import projects.project02.dto.frontend.ConfirmSmsDTO;
 import projects.project02.entyties.User;
 import projects.project02.entyties.UserStatus;
@@ -33,7 +33,7 @@ public class MainRestController {
     @Autowired
     private AuthDataValidator authDataValidator;
     @Autowired
-    private AuthStatusResponseDTO responseDTO;
+    private StatusResponseDTO responseDTO;
     @Autowired
     private GenratorCodeForSms genratorCodeForSms;
     @Autowired
@@ -42,7 +42,7 @@ public class MainRestController {
 
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = "/regisration", method = RequestMethod.POST)
-    public AuthStatusResponseDTO registration(AuthDataDTO authDataDTO, HttpServletRequest request){
+    public StatusResponseDTO registration(AuthDataDTO authDataDTO, HttpServletRequest request){
 //        ReCaptchaResponseDTO reCaptchaResponse = reCaptchaApiClient.verify(authDataDTO.getRecapchaResponse());
 //        if (!reCaptchaResponse.isSuccess()) {
 //            logger.warn("Некорректная капча с ip: "+request.getRemoteAddr());
@@ -95,7 +95,7 @@ public class MainRestController {
 
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = "/confirm", method = RequestMethod.POST)
-    public AuthStatusResponseDTO confirmSms(ConfirmSmsDTO confirmSmsDTO,HttpServletRequest request){
+    public StatusResponseDTO confirmSms(ConfirmSmsDTO confirmSmsDTO, HttpServletRequest request){
         if (authDataValidator.smsCodeIsInValid(confirmSmsDTO.getCode())){
             logger.warn("Невалидный код из sms:"+confirmSmsDTO.getCode()+", пришел с Ip:"+request.getRemoteAddr());
             throw new BadAuthDataRuntimeException();

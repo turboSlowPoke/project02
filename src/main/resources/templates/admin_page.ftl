@@ -11,11 +11,11 @@
 <body ng-app="adminApp" ng-controller="mainController">
 <div id="modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document" id="mainDialog">
-        <form name="form" ng-submit="form.$valid && sendSubmit()">
+        <form name="form" ng-submit="form.$valid && sendSubmit()" ng-show="mainFormIsShow">
             <div class="modal-content">
                 <div class="modal-header">Создать мероприятие<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>
                 <div class="modal-body" id="mainForm">
-                    <div class="alert-danger p-2 text-center text-danger my-1" ng-show="badAuthData">{{statusResponseMessage}}</div>
+                    <div class="alert-danger p-2 text-center text-danger my-1" ng-show="error">{{statusResponseMessage}}</div>
                     <div class="form-group row">
                         <label for="input_name" class="col-sm-2 col-form-label" >Название:</label>
                         <div class="col-sm-10">
@@ -47,6 +47,17 @@
                 </div>
             </div>
         </form>
+        <div class="modal-content" ng-show="succesMessageShow">
+            <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>
+            <div class="modal-body">
+                <div class="alert-info py-3 text-center">
+                    <h5>{{statusResponseMessage}}</h5>
+                </div>
+            </div>
+            <div class="modal-footer ">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Закрыть</button>
+            </div>
+        </div>
     </div>
 </div>
 

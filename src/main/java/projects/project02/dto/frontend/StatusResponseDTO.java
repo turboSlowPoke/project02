@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class AuthStatusResponseDTO {
+public class StatusResponseDTO {
     private String status;
     private String message;
 

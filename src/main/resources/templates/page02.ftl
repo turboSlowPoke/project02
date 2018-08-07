@@ -242,7 +242,7 @@
                                             </a>
                                         </li>
                                     </ul>
-                                    <ul class="flip dayPlayUnits">
+                                <ul class="flip dayPlayUnits">
                                         <li>
                                             <a href="#">
                                                 <div class="up">

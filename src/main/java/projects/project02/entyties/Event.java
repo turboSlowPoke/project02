@@ -10,6 +10,7 @@ import javax.persistence.Id;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
+@Entity
 public class Event {
     @Id @GeneratedValue
     private int id;
@@ -17,6 +18,7 @@ public class Event {
     private String datetime;
     private int seats;
     private String place;
+    private EventStatus status;
 
     @Override
     public String toString() {
@@ -67,5 +69,13 @@ public class Event {
 
     public void setPlace(String place) {
         this.place = place;
+    }
+
+    public EventStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(EventStatus status) {
+        this.status = status;
     }
 }
