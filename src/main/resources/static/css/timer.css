@@ -76,6 +76,15 @@ ul.flip {
     box-shadow: 0 2px 5px rgba(0, 0, 0, .7);
 }
 
+@media (max-width: 776px){
+    ul.flip{
+        width: 45px;
+        height: 70px;
+        font-size: 62px;
+        line-height: 67px;
+    }
+}
+
 ul.flip li {
     z-index: 1;
     position: absolute;

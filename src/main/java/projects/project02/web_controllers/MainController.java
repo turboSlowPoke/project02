@@ -18,7 +18,7 @@ public class MainController {
 
     @GetMapping("/page02")
     public ModelAndView getSecondPage(ModelAndView view){
-        view.setViewName("page02");
+        view.setViewName("page03");
         return view;
     }
 

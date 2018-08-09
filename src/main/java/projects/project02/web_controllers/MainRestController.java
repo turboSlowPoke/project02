@@ -10,6 +10,7 @@ import projects.project02.data_repository.UserRepository;
 import projects.project02.dto.frontend.AuthDataDTO;
 import projects.project02.dto.frontend.StatusResponseDTO;
 import projects.project02.dto.frontend.ConfirmSmsDTO;
+import projects.project02.dto.grecaptcha_api.ReCaptchaResponseDTO;
 import projects.project02.entyties.User;
 import projects.project02.entyties.UserStatus;
 import projects.project02.exceptions.BadAuthDataRuntimeException;
@@ -52,10 +53,10 @@ public class MainRestController {
             logger.warn("Некорректное имя в запросе: " +authDataDTO.getName()+", пришло с ip: "+request.getRemoteAddr());
             throw new BadAuthDataRuntimeException();
         }
-        if (authDataValidator.emailIsInvalid(authDataDTO.getEmail())){
-            logger.warn("Некорректный email в запросе: " +authDataDTO.getName()+", пришло с ip: "+request.getRemoteAddr());
-            throw new BadAuthDataRuntimeException();
-        }
+//        if (authDataValidator.emailIsInvalid(authDataDTO.getEmail())){
+//            logger.warn("Некорректный email в запросе: " +authDataDTO.getName()+", пришло с ip: "+request.getRemoteAddr());
+//            throw new BadAuthDataRuntimeException();
+//        }
         if (authDataValidator.phoneIsInvalid(authDataDTO.getPhone())){
             logger.warn("Некорректный телефон в запросе: " +authDataDTO.getName()+", пришло с ip: "+request.getRemoteAddr());
             throw new BadAuthDataRuntimeException();
