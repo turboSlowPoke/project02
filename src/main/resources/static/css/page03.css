@@ -18,19 +18,18 @@ body{
 }
 
 .caption01{
-    font-size: 3em;
+
     font-family: main, serif;
     color: #FEB322 ;
 }
 .box01{
-    font-size: 3em;
+
     font-family: main, serif;
     background: rgba(232,225,196,0.8);
     text-align: center;
     padding: 2%;
 }
 .box03{
-    font-size: 3em;
     font-family: main, serif;
     background: rgba(232,225,196,0.8);
     text-align: center;
@@ -44,6 +43,10 @@ body{
     font-family: main, serif;
     font-size: 5em;
     background:#FEB225;
+    text-align: center;
+    width: 50%;
+    margin: auto;
+    padding: 0.5%
 }
 
 .block02{
@@ -55,6 +58,7 @@ body{
     font-family: main, serif;
     background: rgba(242, 238, 240, 0.57) url("../images/page03/bg02.jpeg");
     background-size: cover;
+    max-width: 100%;
 }
 .caption02{
     color: #FEB322;
@@ -87,13 +91,22 @@ body{
     width: 50%;
 }
 @media (max-width: 776px){
+    .block01 .block02 .block03 .block04{
+        font-size: 0.25em;
+    }
     .time-units{
         width: 110px;
     }
     .mytimer{
-        width: 470px;
+        width: 230px;
     }
     .days_count_down{
         width: 115px;
     }
+    .subscribe_btn{
+        width: 80%;
+    }
+}
+@media  (min-width : 775px) and (max-width : 1023px){
+
 }

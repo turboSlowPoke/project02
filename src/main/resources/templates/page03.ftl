@@ -87,8 +87,8 @@
     </div>
 <div class="block01 container-fluid " >
     <div class="row my-5">
-        <div class="col-md-4 my-5"></div>
-        <div class="col-md-4 my-5 text-center">
+        <div class="col-md-4 "></div>
+        <div class="col-md-4 text-center">
             <h1 class="caption01 text-center"><span style="background:#FEB225;color: white; padding: 0.3%">мастер</span>класс</h1>
         </div>
         <div class="col-md-4"></div>
@@ -99,7 +99,7 @@
             <div class="box_frame01 mx-auto text-center">
                 <div class="box01">
                     <h1 style="padding: 5%;">3 стратегии,<br> сделавшие нас миллионерами на трендах 2017-2018гг</h1>
-                    <a class="btn w-50 mx-auto subscribe_btn" href="#" style="color: white" data-toggle="modal" data-target=#modal><h3>принять участие</h3></a>
+                    <div class="subscribe_btn" ><a href="#" style="color: white" data-toggle="modal" data-target=#modal ><h3>принять участие</h3></a></div>
                 </div>
             </div>
         </div>
@@ -107,10 +107,10 @@
     </div>
 
 </div>
-<div class="block02 container-fluid w-100 pb-5 ">
+<div class="block02 container-fluid ">
     <div class="row pt-5 pb-5">
-        <div class="col-md-2 my-5 col-lg-3 col-xl-3"></div>
-        <div class="col-md-10 col-lg-6 col-xl-6 mt-3">
+        <div class="col-md-2 col-lg-3 col-xl-3"></div>
+        <div class="col-md-10 col-lg-6 col-xl-6">
             <h1 class="caption02 mx-auto" >до ближайшего мероприятия осталось</h1>
         </div>
         <div class="col-md-2  col-lg-3 col-xl-3"></div>
@@ -929,10 +929,10 @@
             </div>
         </div>
     </div>
-    <div class="row mt-5">
-        <div class="col-md-2 mt-5 col-lg-3 col-xl-3"></div>
+    <div class="row ">
+        <div class="col-md-2 col-lg-3 col-xl-3"></div>
         <div class="col-md-10 col-lg-6 col-xl-6">
-            <h1 class="caption02 mx-auto">количество мест ограничено</h1>
+            <h1 class="caption02">количество мест ограничено</h1>
         </div>
         <div class="col-md-2 col-lg-3 col-xl-3"></div>
     </div>
@@ -1192,16 +1192,16 @@
     <div class="row my-5">
         <div class="col-md-4"></div>
         <div class="col-md-4">
-            <div class="subscribe_btn mt-5" style="background:#FEB225; text-align: center; padding: 0.5%"><a href="#" style="color: white" data-toggle="modal" data-target=#modal><h3>принять участие</h3></a></div>
+            <div class="subscribe_btn mt-5" ><a href="#" style="color: white" data-toggle="modal" data-target=#modal><h3>принять участие</h3></a></div>
         </div>
         <div class="col-md-4"></div>
     </div>
 </div>
-<div class="block03 container-fluid w-100 t-5">
-    <div class="row my-5">
+<div class="block03 container-fluid  pt-5">
+    <div class="row ">
         <div class="col-md-2"></div>
         <div class="col-md-8">
-            <h1 class="text-center my-5 caption01"><span style="background:#FEB225;color: white; padding: 0.3%"> для кого предназначен</span>мастер класс</h1>
+            <h1 class="text-center  caption01"><span style="background:#FEB225;color: white; padding: 0.3%"> для кого предназначен</span>мастер класс</h1>
         </div>
         <div class="col-md-2"></div>
     </div>
@@ -1245,7 +1245,7 @@
         <div class="col-md-2"></div>
     </div>
 </div>
-<div class="block04 container-fluid w-100pt-5">
+<div class="block04 container-fluid  pt-5">
     <div class="row my-5">
         <div class="col-md-2 my-5"></div>
         <div class="col-md-8">
@@ -1254,31 +1254,27 @@
         <div class="col-md-2"></div>
     </div>
     <div class="row my-5">
-        <div class="col-md-4">
+        <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
             <div class="row">
-                <div style="width: 95%; margin: auto">
-                    <img class="img-fluid" src="images/page03/zevota.jpg">
-                </div>
+
+                <img class="img-fluid" src="images/page03/zevota.jpg">
+
             </div>
             <div class="row  mt-3">
                 <h3 class="w-75 m-auto text-center">скучно и занудно, это обещаем</h3>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
             <div class="row">
-                <div class="p-2">
-                    <img class="img-fluid" src="images/page03/amway.jpg">
-                </div>
+                <img class="img-fluid" src="images/page03/amway.jpg">
             </div>
             <div class="row  mt-3">
                 <h3 class="w-75 m-auto text-center">обучения продажам бытовой химии и продуктов питания</h3>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
             <div class="row">
-                <div class="p-2">
-                    <img class="img-fluid" src="images/page03/blabla.jpg">
-                </div>
+                <img class="img-fluid" src="images/page03/blabla.jpg">
             </div>
             <div class="row  mt-3">
                 <h3 class="w-75 m-auto text-center">пустых обещаний</h3>
@@ -1294,7 +1290,7 @@
     </div>
 
 </div>
-<div class="block01 container-fluid w-100 pt-5">
+<div class="block01 container-fluid  pt-5">
     <div class="row my-5">
         <div class="col-md-2"></div>
         <div class="col-md-8">
@@ -1309,12 +1305,12 @@
                 <div class="box01" style="font-size: 1.4em">
                     <p>На столько же процентов увеличилось число людей, с доходами ниже прожиточного мигниммума.</p>
                     <p>У человека всегда есть выбор, как поступить в своей жизни. Сложность заключается не в том,
-                        что выбор труден, а в том, что за него придется нести ответственность, в первую очередь перед собой.
-                        А это и становится непосильной ношей для многих.</p>
+                            что выбор труден, а в том, что за него придется нести ответственность, в первую очередь перед собой.
+                            А это и становится непосильной ношей для многих.</p>
                     <p>Кто бы мне не говорил обратное, я убежден, человек всегда может выбрать, что ему делать.</p>
                     <hr>
                     <p style="font-size: 1.6em">Следуй за свой мечтой!</p>
-                    <div class="subscribe_btn" style="background:#FEB225; text-align: center; width: 50%; margin: auto; padding: 0.5%"><a href="#" style="color: white" data-toggle="modal" data-target=#modal ><h3>принять участие</h3></a></div>
+                    <div class="subscribe_btn"><a href="#" style="color: white" data-toggle="modal" data-target=#modal ><h3>принять участие</h3></a></div>
                 </div>
             </div>
         </div>
