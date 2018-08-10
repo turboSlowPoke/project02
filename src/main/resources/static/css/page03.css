@@ -3,30 +3,24 @@
     src: url('font/BEBASNEUE_REGULAR.otf');
 }
 body{
-    width: 100%;
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
 .body1{
-    background-image: url("/images/page03/banner-10.jpg");
-
+    background-image: url("../images/page03/banner-10.jpg");
 }
 .body2{
-    background-image: url("/images/page03/bg03.jpg");
-
+    background-image: url("../images/page03/bg03.jpg");
 }
 .body3{
-    background-image: url("/images/page03/willa.jpg");
+    background-image: url("../images/page03/willa.jpg");
 }
 
 .caption01{
     font-size: 3em;
     font-family: main, serif;
     color: #FEB322 ;
-    width: 50%;
-    margin: 5% auto 2% auto;
-    text-align: center;
 }
 .box01{
     font-size: 3em;
@@ -34,48 +28,41 @@ body{
     background: rgba(232,225,196,0.8);
     text-align: center;
     padding: 2%;
-
+}
+.box03{
+    font-size: 3em;
+    font-family: main, serif;
+    background: rgba(232,225,196,0.8);
+    text-align: center;
+    padding: 2%;
 }
 .box_frame01{
-    width: 60%;
-    margin: 0 auto 20% auto;
     padding: 5px;
     border: 3px solid rgba(232,225,196,0.8);
-    position: relative;
 }
 .subscribe_btn{
     font-family: main, serif;
     font-size: 5em;
-    width: 25%;
-    margin: 3% auto;
-    padding-top: 0.5%;
-    padding-bottom: 0;
+    background:#FEB225;
 }
 
 .block02{
     font-family: main, serif;
     background: rgba(242, 238, 240, 0.57) url("../images/page03/bg02.jpeg");
     background-size: cover;
-    width: 100%;
-    padding-top: 2%;
 }
-.block03{
+.block04{
     font-family: main, serif;
     background: rgba(242, 238, 240, 0.57) url("../images/page03/bg02.jpeg");
     background-size: cover;
-    width: 100%;
-    padding-top: 2%;
 }
 .caption02{
     color: #FEB322;
     font-family: main, serif;
     text-align: center;
-    width: 60%;
-    margin: 4% auto 0.5% auto;
 }
 .mytimer{
     width: 620px;
-    padding: 0.5% 1% 1% 2%;
     margin: auto;
 }
 .time-units{
@@ -100,19 +87,6 @@ body{
     width: 50%;
 }
 @media (max-width: 776px){
-    .caption01{
-        width: 100%;
-        font-size: 2em;
-    }
-    .box_frame01{
-        width: 90%;
-    }
-    .subscribe_btn{
-        width: 50%;
-    }
-    .caption02{
-        width: 99%;
-    }
     .time-units{
         width: 110px;
     }
@@ -121,16 +95,5 @@ body{
     }
     .days_count_down{
         width: 115px;
-    }
-}
-@media  (min-width : 775px) and (max-width : 1023px){
-    .caption01{
-        width: 70%;
-    }
-    .box_frame01{
-        width: 70%;
-    }
-    .subscribe_btn{
-        width: 40%;
     }
 }
