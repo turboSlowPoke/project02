@@ -25,7 +25,9 @@
         </div>
     </div>
     <div class="row my-2">
-        <h5 class="title text-center mx-auto" style="color: green">Сделай свой выбор - нажми на таблетку!</h5>
+        <div class="col-12">
+            <h5 class="text-center" style="color: green">Сделай свой выбор - нажми на таблетку!</h5>
+        </div>
     </div>
 </div>
 

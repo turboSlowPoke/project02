@@ -2,33 +2,44 @@
     font-family: main;
     src: url('font/BEBASNEUE_REGULAR.otf');
 }
-body{
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+ html,body{
+    height:100%;
+    width:100%;
+    background-size:cover;
+    background-repeat:no-repeat;
+    background-position: center center;
+    background-attachment:fixed;
 }
 .body1{
     background-image: url("../images/page03/banner-10.jpg");
+    background-color: #1A191E;
 }
 .body2{
     background-image: url("../images/page03/bg03.jpg");
+    background-color: #122337;
 }
 .body3{
     background-image: url("../images/page03/willa.jpg");
+    background-color: #330E0B;
 }
 
 .caption01{
-
     font-family: main, serif;
-    color: #FEB322 ;
+    color: #FEB322;
 }
 .box01{
-
     font-family: main, serif;
     background: rgba(232,225,196,0.8);
     text-align: center;
     padding: 2%;
 }
+.box02{
+    font-family: main, serif;
+    background: rgba(232,225,196,1);
+    text-align: center;
+    padding: 2%;
+}
+
 .box03{
     font-family: main, serif;
     background: rgba(232,225,196,0.8);
@@ -42,11 +53,11 @@ body{
 .subscribe_btn{
     font-family: main, serif;
     font-size: 5em;
-    background:#FEB225;
+    background:red;
     text-align: center;
     width: 50%;
     margin: auto;
-    padding: 0.5%
+    padding: 1% 0.4% 0.4% 0.4%;
 }
 
 .block02{
@@ -89,15 +100,17 @@ body{
 }
 .slide{
     width: 50%;
+
 }
+
+
 @media (max-width: 776px){
-    .block01 .block02 .block03 .block04{
-        font-size: 0.25em;
+    .body1{
+        background-image: url("../images/page03/bg1.png");
+        background-color: #1A191E;
     }
     .time-units{
-
         width: 110px;
-
     }
     .mytimer{
         width: 230px;
@@ -110,5 +123,10 @@ body{
     }
 }
 @media  (min-width : 775px) and (max-width : 1023px){
+
+}
+
+@media  (min-width : 775px){
+
 
 }
