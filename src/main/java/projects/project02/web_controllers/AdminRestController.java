@@ -10,7 +10,9 @@ import projects.project02.data_repository.UserRepository;
 import projects.project02.dto.frontend.StatusResponseDTO;
 import projects.project02.entyties.Event;
 import projects.project02.entyties.EventStatus;
+import projects.project02.entyties.User;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -39,5 +41,16 @@ public class AdminRestController {
                     responseDTO.setMessage("Мероприятие создано");
                 });
         return responseDTO;
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(value = "/admin/event_list",method = RequestMethod.GET)
+    public Iterable<Event> getEventList(){
+        return eventRepository.findAll();
+    }
+    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(value = "/admin/user_list",method = RequestMethod.GET)
+    public Iterable<User> getUserList(){
+        return userRepository.findAll();
     }
 }

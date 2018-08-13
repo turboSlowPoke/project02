@@ -25,6 +25,7 @@ public class User implements Serializable {
     private String smsCode;
     @Enumerated(EnumType.STRING)
     private UserStatus status;
+    private Integer eventId;
 
     @Override
     public String toString() {
@@ -93,5 +94,13 @@ public class User implements Serializable {
 
     public void setStatus(UserStatus status) {
         this.status = status;
+    }
+
+    public Integer getEventId() {
+        return eventId;
+    }
+
+    public void setEventId(Integer eventId) {
+        this.eventId = eventId;
     }
 }

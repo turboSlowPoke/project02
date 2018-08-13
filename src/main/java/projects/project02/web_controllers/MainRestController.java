@@ -6,11 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import projects.project02.data_repository.EventRepository;
 import projects.project02.data_repository.UserRepository;
 import projects.project02.dto.frontend.AuthDataDTO;
 import projects.project02.dto.frontend.StatusResponseDTO;
 import projects.project02.dto.frontend.ConfirmSmsDTO;
 import projects.project02.dto.grecaptcha_api.ReCaptchaResponseDTO;
+import projects.project02.entyties.Event;
+import projects.project02.entyties.EventStatus;
 import projects.project02.entyties.User;
 import projects.project02.entyties.UserStatus;
 import projects.project02.exceptions.BadAuthDataRuntimeException;
@@ -39,6 +42,8 @@ public class MainRestController {
     private GenratorCodeForSms genratorCodeForSms;
     @Autowired
     private SmsService smsService;
+    @Autowired
+    private EventRepository eventRepository;
 
 
     @ResponseStatus(HttpStatus.OK)
@@ -83,6 +88,10 @@ public class MainRestController {
                     user.setRegistrationDate(LocalDateTime.now());
                     user.setSmsCode(""+genratorCodeForSms.getCodeFoSms());
                     user.setStatus(UserStatus.CREATED);
+                    Optional<Event> event = eventRepository.findEventByStatus(EventStatus.ACTIVE);
+                    if (event.isPresent()){
+                        user.setEventId(event.get().getId());
+                    }
                     user=userRepository.save(user);
                     logger.info("Сохранён новый пользователь " +user);
                     request.getSession().setAttribute("userId",user.getId());

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/frameworks/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -60,15 +60,77 @@
         </div>
     </div>
 </div>
-
 <nav class="navbar">
     <a class="btn btn-primary text-white" data-toggle="modal" data-target=#modal>Создать мероприятие</a>
 </nav>
+<div class="container container-fluid">
+    <div class="row">
+        <div class="">
+            <div class="card-header">Список мероприятий</div>
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>название</th>
+                        <th>дата</th>
+                        <th>количество мест</th>
+                        <th>место проведения</th>
+                        <th>статус</th>
+                    </tr>
+                    </thead>
+                    <tbody ng-repeat="event in eventList">
+                    <tr>
+                        <td>{{event.id}}</td>
+                        <td>{{event.name}}</td>
+                        <td>{{event.datetime | date : 'short'}}</td>
+                        <td>{{event.seats}}</td>
+                        <td>{{event.place}}</td>
+                        <td>{{event.status}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="">
+            <div class="card-header">Список юзеров</div>
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>имя</th>
+                        <th>телефон</th>
+                        <th>статус номера</th>
+                        <th>дата регистрации</th>
+                        <th>номер мероприятия</th>
+
+                    </tr>
+                    </thead>
+                    <tbody ng-repeat="user in userList">
+                    <tr>
+                        <td>{{user.id}}</td>
+                        <td>{{user.name}}</td>
+                        <td>{{user.phone }}</td>
+                        <td>{{user.status}}</td>
+                        <td>{{user.registrationDate| date : 'short'}}</td>
+                        <td>{{user.eventId}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
 
 
-<script src="js/jquery-3.2.1.slim.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/angular.min.js"></script>
+<script src="js/frameworks/jquery.min.js"></script>
+<script src="js/frameworks/bootstrap.min.js"></script>
+<script src="js/frameworks/angular.min.js"></script>
 <script src="js/admin_page.js"></script>
 </body>
 </html>

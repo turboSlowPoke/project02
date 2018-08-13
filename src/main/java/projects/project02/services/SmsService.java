@@ -33,7 +33,7 @@ public class SmsService {
             requestSmsApiDTO.setMessages(List.of(messageSmsDTO));
             logger.info("Отправляем смс:"+requestSmsApiDTO);
 //            smsResponse = restTemplate.postForObject(apiURL, requestSmsApiDTO, ResponseSmsApiDTO.class);
-            logger.info(smsResponse.toString());
+//            logger.info(smsResponse.toString());
         }catch (RestClientException e){
             logger.trace("Ошибка при отправке смс",e);
         }

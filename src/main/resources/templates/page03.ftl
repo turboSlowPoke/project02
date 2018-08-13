@@ -50,7 +50,7 @@
                         <input id="csrf" type="hidden"  name="_csrf" value="${_csrf.token}" ng-model="auth._csrf">
                     </div>
                     <div class="modal-footer ">
-                        <button type="submit" class="btn btn-danger mx-auto" ng-disabled="form.$invalid">Отпрваить</button>
+                        <button type="submit" class="btn btn-danger mx-auto" ng-disabled="form.$invalid">Отправить</button>
                     </div>
                 </div>
             </form>
@@ -70,7 +70,7 @@
                         <input id="csrf" type="hidden"  name="_csrf" value="${_csrf.token}" ng-model="auth._csrf">
                     </div>
                     <div class="modal-footer ">
-                        <button type="submit" class="btn btn-danger mx-auto" ng-disabled="confirmForm.$invalid">Отпрваить</button>
+                        <button type="submit" class="btn btn-danger mx-auto" ng-disabled="confirmForm.$invalid">Отправить</button>
                     </div>
                 </div>
             </form>
@@ -110,15 +110,15 @@
     </div>
 
 </div>
-<div class="block02 container-fluid ">
-    <div class="row pt-5 pb-5">
+<div class="block02 container-fluid py-2 ">
+    <div class="row py-3 py-sm-3 py-md-5 py-lg-5 py-xl-5">
         <div class="col-md-2 col-lg-3 col-xl-3"></div>
         <div class="col-md-10 col-lg-6 col-xl-6">
             <h1 class="caption02 mx-auto" ><span style="background:#FEB225;color: white; padding: 0.5%">до ближайшего мероприятия осталось</span></h1>
         </div>
         <div class="col-md-2  col-lg-3 col-xl-3"></div>
     </div>
-    <div class="row mb-5">
+    <div class="row  mb-2 mb-sm-2 mb-md-5 mb-lg-5 mb-xl-5">
         <div class="col-12 mb-5">
             <div class="mytimer">
                 <div class="time-units">
@@ -939,7 +939,7 @@
         </div>
         <div class="col-md-2 col-lg-3 col-xl-3"></div>
     </div>
-    <div class="row mb-5">
+    <div class="row mb-2 mb-sm-2 mb-md-5 mb-lg-5 mb-xl-5 ">
         <div class="col-12">
             <div class="days_count_down">
                 <div class="time-units">
@@ -1192,7 +1192,7 @@
             </div>
         </div>
     </div>
-    <div class="row my-5">
+    <div class="row my-2 my-sm-2 my-md-5 my-lg-5 my-xl-5">
         <div class="col-lg-4"></div>
         <div class="col-lg-4">
             <div class="subscribe_btn mt-5" ><a href="#" style="color: white" data-toggle="modal" data-target=#modal><h3>принять участие</h3></a></div>
@@ -1207,41 +1207,57 @@
             <h1 class="text-center  caption01"><span style="background:#FEB225;color: white; padding: 0.5%"> для кого предназначен мастер класс</span></h1>
         </div>
         <div class="col-md-2"></div>
+
     </div>
     <div class="row">
         <div class="col-lg-2"></div>
         <div class="col-lg-8">
             <div class="box_frame01">
                 <div class="box01">
-                    <div class="slider my-5" style="font-size: 2em">
-                        <div  >У меня нет времени</div>
-                        <div >Уже слишком поздно, вот если бы я начал раньше…</div>
-                        <div >Это слишком трудно</div>
-                        <div >Я просто жду вдохновения</div>
-                        <div >У меня пока недостаточно денег</div>
-                        <div >Я сегодня слишком устал</div>
-                        <div >Я обязательно начну завтра, на следующей неделе, в следующем месяце, в следующем году</div>
-                        <div >Я слишком молод</div>
-                        <div >Я слишком стар</div>
-                        <div >У меня нет нужного таланта</div>
-                        <div >Это отнимет слишком много времени</div>
-                        <div >Я не достаточно умен для этого</div>
-                        <div >У меня нет необходимого опыта</div>
-                        <div >Я слишком занят</div>
-                        <div >Мне придется забросить людей, которые нуждаются во мне</div>
-                        <div >Я не уверен, что это правильное решение</div>
-                        <div >Что, если у меня не получится?</div>
-                        <div >Я и так не плохо живу</div>
-                        <div >Это слишком рискованно</div>
-                        <div >Мне страшно</div>
-                        <div >Я не имею нужных ресурсов</div>
-                        <div >Я слишком много вложил в свою нынешнюю работу</div>
-                        <div >У меня нет нужных связей</div>
-                        <div >Очень многие до меня уже пытались и потерпели неудачу</div>
-                        <div >В экономике сейчас не самый подходящий момент</div>
-                        <div >Сейчас просто не время</div>
+                    <div class="row">
+                        <div class="col-1 p-0 m-0">
+                            <div style="height: 30%;"></div>
+                            <a class="prev1 m-0 p-0" style="color: red"><i class="fas fa-chevron-circle-left fa-2x"></i></a>
+                        </div>
+                        <div class="col-10">
+                            <div class="slider1 my-5" style="font-size: 2em">
+                                <div  >У меня нет времени</div>
+                                <div >Уже слишком поздно, вот если бы я начал раньше…</div>
+                                <div >Это слишком трудно</div>
+                                <div >Я просто жду вдохновения</div>
+                                <div >У меня пока недостаточно денег</div>
+                                <div >Я сегодня слишком устал</div>
+                                <div >Я слишком молод</div>
+                                <div >Я слишком стар</div>
+                                <div >У меня нет нужного таланта</div>
+                                <div >Это отнимет слишком много времени</div>
+                                <div >Я не достаточно умен для этого</div>
+                                <div >У меня нет необходимого опыта</div>
+                                <div >Я слишком занят</div>
+                                <div >Мне придется забросить людей, которые нуждаются во мне</div>
+                                <div >Я не уверен, что это правильное решение</div>
+                                <div >Что, если у меня не получится?</div>
+                                <div >Я и так не плохо живу</div>
+                                <div >Это слишком рискованно</div>
+                                <div >Мне страшно</div>
+                                <div >Я не имею нужных ресурсов</div>
+                                <div >Я слишком много вложил в свою нынешнюю работу</div>
+                                <div >У меня нет нужных связей</div>
+                                <div >Очень многие до меня уже пытались и потерпели неудачу</div>
+                                <div >В экономике сейчас не самый подходящий момент</div>
+                                <div >Сейчас просто не время</div>
+                            </div>
+                        </div>
+                        <div class="col-1 p-0 m-0">
+                            <div style="height: 30%"></div>
+                            <a class="next1 m-0 p-0" style="color: red"><i class="fas fa-chevron-circle-right next fa-2x"></i></a>
+                        </div>
                     </div>
-                    <div class="subscribe_btn"><a href="#" style="color: white" data-toggle="modal" data-target=#modal><h3>принять участие</h3></a></div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="subscribe_btn"><a href="#" style="color: white" data-toggle="modal" data-target=#modal><h3>принять участие</h3></a></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1249,57 +1265,67 @@
     </div>
 </div>
 <div class="block04 container-fluid  pt-5">
-    <div class="row my-5 my-sm-5 my-md-5 my-lg-2 my-xl-2">
+    <div class="row my-2">
         <div class="col-lg-2"></div>
         <div class="col-lg-8">
-            <h1 class="text-center caption01 my-5 my-sm-5 my-md-5 my-lg-2 my-xl-2"><span style="background:#FEB225;color: white; padding: 0.5%">чего не будет на нашем мастер классе</span></h1>
+            <h1 class="text-center caption01 my-2 "><span style="background:#FEB225;color: white; padding: 0.5%">чего не будет на нашем мастер классе</span></h1>
         </div>
         <div class="col-lg-2"></div>
     </div>
     <div class="row my-lg-5 my-5 my-sm-5 my-md-5 my-lg-2 my-xl-2">
-        <div class="col-lg-3">
-
-        </div>
+        <div class="col-lg-3"></div>
         <div class="col-lg-6">
-            <div class="slider" class="mx-auto" style="width: 90%">
-                <div>
-                    <div >
-                        <img class="img-fluid" src="images/page03/slides/1.jpg">
-                    </div>
-                    <h3 class="text-center mt-1">скучно и занудно, это обещаем</h3>
+            <div class="row">
+                <div class="col-1 m-0 p-0">
+                    <div style="height: 40%"></div>
+                    <a class="prev m-0 p-0" style="color: red"><i class="fas fa-chevron-circle-left fa-2x"></i></a>
                 </div>
-                <div>
-                    <div >
-                        <img class="img-fluid" src="images/page03/slides/2.jpg">
+                <div class="col-10">
+                    <div class="slider w-100" >
+                        <div>
+                            <div >
+                                <img class="img-fluid" src="images/page03/slides/1.jpg">
+                            </div>
+                            <h3 class="text-center mt-1">скучно и занудно, это обещаем</h3>
+                        </div>
+                        <div>
+                            <div >
+                                <img class="img-fluid" src="images/page03/slides/2.jpg">
+                            </div>
+                            <h3 class="text-center mt-1">обучения продажам бытовой химии и продуктов питания</h3>
+                        </div>
+                        <div>
+                            <div >
+                                <img class="img-fluid" src="images/page03/slides/3.jpg">
+                            </div>
+                            <h3 class="text-center mt-1">пустых обещаний</h3>
+                        </div>
+                        <div>
+                            <div >
+                                <img class="img-fluid" src="images/page03/slides/4.jpg">
+                            </div>
+                            <h3 class="text-center mt-1">у нас не бизнес тренинги</h3>
+                        </div>
+                        <div>
+                            <div >
+                                <img class="img-fluid" src="images/page03/slides/5.jpg">
+                            </div>
+                            <h3 class="text-center mt-1">мы не свидетели Иеговы</h3>
+                        </div>
+                        <div>
+                            <div >
+                                <img class="img-fluid" src="images/page03/slides/6.jpg">
+                            </div>
+                            <h3 class="text-center mt-1">нет сказок бабушки Галины</h3>
+                        </div>
                     </div>
-                    <h3 class="text-center mt-1">обучения продажам бытовой химии и продуктов питания</h3>
                 </div>
-                <div>
-                    <div >
-                        <img class="img-fluid" src="images/page03/slides/3.jpg">
-                    </div>
-                    <h3 class="text-center mt-1">пустых обещаний</h3>
+                <div class="col-1 m-0 p-0">
+                    <div style="height: 40%"></div>
+                    <a class="next m-0 p-0" style="color: red"><i class="fas fa-chevron-circle-right next fa-2x"></i></a>
                 </div>
-                <div>
-                    <div >
-                        <img class="img-fluid" src="images/page03/slides/4.jpg">
-                    </div>
-                    <h3 class="text-center mt-1">у нас не бизнес тренинги</h3>
-                </div>
-                <div>
-                    <div >
-                        <img class="img-fluid" src="images/page03/slides/5.jpg">
-                    </div>
-                    <h3 class="text-center mt-1">мы не свидетели Иеговы</h3>
-                </div>
-                <div>
-                    <div >
-                        <img class="img-fluid" src="images/page03/slides/6.jpg">
-                    </div>
-                    <h3 class="text-center mt-1">нет сказок бабушки Галины</h3>
-                </div>
-
             </div>
+
 
         </div>
         <div class="col-lg-3">
@@ -1316,11 +1342,11 @@
 </div>
 <div class="block01 container-fluid  pt-5">
     <div class="row my-5">
-        <div class="col-md-2 col-lg-3 col-xl-4"></div>
-        <div class="col-md-8 col-lg-6 col-xl-4">
+        <div class="col-md-2 col-lg-3 col-xl-3"></div>
+        <div class="col-md-8 col-lg-6 col-xl-6">
             <h1 class="caption01 text-center" style="background:#FEB225;color: white; padding: 0.5%">Количество миллионеров в россии <br>увеличилось за прошлый год на 20%</h1>
         </div>
-        <div class="col-md-2 col-lg-3 col-xl-4"></div>
+        <div class="col-md-2 col-lg-3 col-xl-3"></div>
     </div>
     <div class="row">
         <div class="col-md-2"></div>
@@ -1329,8 +1355,8 @@
                 <div class="box02" style="font-size: 1.4em; background: rgba(232,225,196,1);">
                     <p>На столько же процентов увеличилось число людей, с доходами ниже прожиточного мигниммума.</p>
                     <p>У человека всегда есть выбор, как поступить в своей жизни. Сложность заключается не в том,
-                        что выбор труден, а в том, что за него придется нести ответственность, в первую очередь перед собой.
-                        А это и становится непосильной ношей для многих.</p>
+                            что выбор труден, а в том, что за него придется нести ответственность, в первую очередь перед собой.
+                            А это и становится непосильной ношей для многих.</p>
                     <p>Кто бы мне не говорил обратное, я убежден, человек всегда может выбрать, что ему делать.</p>
                     <hr>
                     <p style="font-size: 1.6em">Следуй за свой мечтой!</p>

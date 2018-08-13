@@ -2,7 +2,7 @@
     font-family: main;
     src: url('font/BEBASNEUE_REGULAR.otf');
 }
- html,body{
+ html, body{
     height:100%;
     width:100%;
     background-size:cover;
@@ -100,14 +100,14 @@
 }
 .slide{
     width: 50%;
-
 }
+
+
 
 
 @media (max-width: 776px){
     .body1{
         background-image: url("../images/page03/bg1.png");
-        background-color: #1A191E;
     }
     .time-units{
         width: 110px;
@@ -121,12 +121,26 @@
     .subscribe_btn{
         width: 80%;
     }
-}
-@media  (min-width : 775px) and (max-width : 1023px){
-
+    .block01,.block02,.block03,.block04{
+        font-size: 1em;
+    }
+    .prev,.prev1,.next,.next1{
+        font-size: 0.5em;
+    }
+    .slider1{
+        font-size: 1.5em;
+    }
+    .box02{
+        font-size:0.5em;
+    }
+    .caption01{
+        font-size:2em;
+    }
+    .caption02{
+        font-size:2em;
+    }
 }
 
 @media  (min-width : 775px){
-
 
 }
