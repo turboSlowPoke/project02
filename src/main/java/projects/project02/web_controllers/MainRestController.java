@@ -90,7 +90,10 @@ public class MainRestController {
                     user.setStatus(UserStatus.CREATED);
                     Optional<Event> event = eventRepository.findEventByStatus(EventStatus.ACTIVE);
                     if (event.isPresent()){
-                        user.setEventId(event.get().getId());
+                        Event e =event.get();
+                        user.setEventId(e.getId());
+                        e.setCountSeats(e.getCountSeats()-1);
+                        eventRepository.save(e);
                     }
                     user=userRepository.save(user);
                     logger.info("Сохранён новый пользователь " +user);

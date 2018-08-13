@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.time.LocalDateTime;
 
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -15,8 +16,9 @@ public class Event {
     @Id @GeneratedValue
     private int id;
     private String name;
-    private String datetime;
-    private int seats;
+    private LocalDateTime datetime;
+    private int allSeats;
+    private int countSeats;
     private String place;
     private EventStatus status;
 
@@ -26,7 +28,7 @@ public class Event {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", datetime='" + datetime + '\'' +
-                ", seats=" + seats +
+                ", allSeats=" + allSeats +
                 ", place='" + place + '\'' +
                 '}';
     }
@@ -47,20 +49,20 @@ public class Event {
         this.name = name;
     }
 
-    public String getDatetime() {
+    public LocalDateTime getDatetime() {
         return datetime;
     }
 
-    public void setDatetime(String datetime) {
+    public void setDatetime(LocalDateTime datetime) {
         this.datetime = datetime;
     }
 
-    public int getSeats() {
-        return seats;
+    public int getAllSeats() {
+        return allSeats;
     }
 
-    public void setSeats(int seats) {
-        this.seats = seats;
+    public void setAllSeats(int allSeats) {
+        this.allSeats = allSeats;
     }
 
     public String getPlace() {
@@ -77,5 +79,13 @@ public class Event {
 
     public void setStatus(EventStatus status) {
         this.status = status;
+    }
+
+    public int getCountSeats() {
+        return countSeats;
+    }
+
+    public void setCountSeats(int countSeats) {
+        this.countSeats = countSeats;
     }
 }

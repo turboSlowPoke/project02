@@ -34,6 +34,7 @@ public class AdminRestController {
                     responseDTO.setMessage("Нельзя создать мероприятие, уже есть активное мероприятие");
                 },
                 () -> {
+                    newEvent.setCountSeats(newEvent.getAllSeats());
                     newEvent.setStatus(EventStatus.ACTIVE);
                     eventRepository.save(newEvent);
                     logger.info("Создано новое мероприятие",newEvent);

@@ -31,7 +31,7 @@
                     <div class="form-group row">
                         <label for="input_seats" class="col-sm-2 col-form-label" >Количество участниокв</label>
                         <div class="col-sm-10">
-                            <input id="input_seats" type="number" class="form-control" name="seats" ng-model="event.seats" required>
+                            <input id="input_seats" type="number" class="form-control" name="allSeats" ng-model="event.allSeats" required>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -60,12 +60,10 @@
         </div>
     </div>
 </div>
-<nav class="navbar">
-    <a class="btn btn-primary text-white" data-toggle="modal" data-target=#modal>Создать мероприятие</a>
-</nav>
+
 <div class="container container-fluid">
-    <div class="row">
-        <div class="">
+    <div class="row my-2">
+        <div class="card">
             <div class="card-header">Список мероприятий</div>
             <div class="card-body">
                 <table class="table">
@@ -74,7 +72,8 @@
                         <th>id</th>
                         <th>название</th>
                         <th>дата</th>
-                        <th>количество мест</th>
+                        <th>всего мест</th>
+                        <th>осталось мест</th>
                         <th>место проведения</th>
                         <th>статус</th>
                     </tr>
@@ -84,18 +83,21 @@
                         <td>{{event.id}}</td>
                         <td>{{event.name}}</td>
                         <td>{{event.datetime | date : 'short'}}</td>
-                        <td>{{event.seats}}</td>
+                        <td>{{event.allSeats}}</td>
+                        <td>{{event.countSeats}}</td>
                         <td>{{event.place}}</td>
                         <td>{{event.status}}</td>
                     </tr>
                     </tbody>
                 </table>
             </div>
-
+            <div class="card-footer">
+                <a class="btn btn-primary text-white" data-toggle="modal" data-target=#modal>Создать мероприятие</a>
+            </div>
         </div>
     </div>
-    <div class="row">
-        <div class="">
+    <div class="row my-2">
+        <div class="card">
             <div class="card-header">Список юзеров</div>
             <div class="card-body">
                 <table class="table">

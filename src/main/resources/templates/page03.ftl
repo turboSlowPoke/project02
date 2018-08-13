@@ -11,8 +11,6 @@
     <link rel="stylesheet" href="css/frameworks/slick-theme.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
-
-
 </head>
 <body class="body1"  ng-app="mainApp" ng-controller="mainController">
 <div id="modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
@@ -121,6 +119,11 @@
     <div class="row  mb-2 mb-sm-2 mb-md-5 mb-lg-5 mb-xl-5">
         <div class="col-12 mb-5">
             <div class="mytimer">
+            <#if timerDays??>
+                <input id="timerDays" type="hidden" name="timerDays" value="${timerDays}">
+                <input id="timerHours" type="hidden" name="timerHours" value="${timerHours}">
+                <input id="timerMinutes" type="hidden" name="timerMinutes" value="${timerMinutes}">
+            </#if>
                 <div class="time-units">
                     <ul class="flip dayPlayDozens">
                         <li>
@@ -942,6 +945,9 @@
     <div class="row mb-2 mb-sm-2 mb-md-5 mb-lg-5 mb-xl-5 ">
         <div class="col-12">
             <div class="days_count_down">
+            <#if seatsCount??>
+                <input id="seatsCount" type="hidden" name="seatsCount" value="${seatsCount}">
+            </#if>
                 <div class="time-units">
                     <ul class="flip dayPlayDozens">
                         <li>

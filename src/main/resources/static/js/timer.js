@@ -1,10 +1,20 @@
 
-var countSeconds="38";
-var countMinutes="32";
-var countHours="19";
-var countDay="10";
+var countSeconds="59";
+var countMinutes="59";
+var countHours="15";
+var countDay="99";
 
 $(document).ready(function () {
+    if (typeof $('#timerMinutes').val() !== 'undefined'){
+        countMinutes=$('#timerMinutes').val();
+        countHours=$('#timerHours').val();
+        countDay=$('#timerDays').val();
+    }
+    var countSeat = "99";
+    if (typeof $('#seatsCount').val() !== 'undefined'){
+        countSeat=$('#seatsCount').val();
+    }
+
     for (var i=9;i>countSeconds.substr(1);i--){
         secondPlayUnits();
     }
@@ -28,6 +38,12 @@ $(document).ready(function () {
     }
     for (var i=9;i>countDay.substr(0,1);i--){
         dayPlayDozens();
+    }
+    for (var i=9;i>countSeat.substr(1);i--){
+        seatPlayUnits();
+    }
+    for (var i=9;i>countSeat.substr(0,1);i--){
+        seatPlayDozens();
     }
 
 });
@@ -321,6 +337,74 @@ function dayPlayDozens() {
     }
     else {
         $("ul.dayPlayDozens li").removeClass("before");
+        aa.addClass("before")
+            .removeClass("active")
+            .next("li")
+            .addClass("active")
+            .closest("body")
+            .addClass("play");
+    }
+
+}
+
+function seatPlayUnits() {
+    $("body").removeClass("play");
+    var aa = $("ul.seatPlayUnits li.active");
+
+    if (aa.html() == undefined) {
+        aa = $("ul.seatPlayUnits li").eq(0);
+        aa.addClass("before")
+            .removeClass("active")
+            .next("li")
+            .addClass("active")
+            .closest("body")
+            .addClass("play");
+
+    }
+    else if (aa.is(":last-child")) {
+        $("ul.seatPlayUnits li").removeClass("before");
+        aa.addClass("before").removeClass("active");
+        aa = $("ul.seatPlayUnits li").eq(0);
+        aa.addClass("active")
+            .closest("body")
+            .addClass("play");
+    }
+    else {
+        $("ul.seatPlayUnits li").removeClass("before");
+        aa.addClass("before")
+            .removeClass("active")
+            .next("li")
+            .addClass("active")
+            .closest("body")
+            .addClass("play");
+    }
+
+}
+
+function seatPlayDozens() {
+    $("body").removeClass("play");
+    var aa = $("ul.seatPlayDozens li.active");
+
+    if (aa.html() == undefined) {
+        aa = $("ul.seatPlayDozens li").eq(0);
+        aa.addClass("before")
+            .removeClass("active")
+            .next("li")
+            .addClass("active")
+            .closest("body")
+            .addClass("play");
+
+    }
+    else if (aa.is(":last-child")) {
+        $("ul.seatPlayDozens li").removeClass("before");
+        aa.addClass("before").removeClass("active");
+        aa = $("ul.seatPlayDozens li").eq(0);
+        aa.addClass("active")
+            .closest("body")
+            .addClass("play");
+    }
+    else {
+        $("ul.seatPlayDozens li").removeClass("before");
         aa.addClass("before")
             .removeClass("active")
             .next("li")
