@@ -112,7 +112,7 @@
     <div class="row py-3 py-sm-3 py-md-5 py-lg-5 py-xl-5">
         <div class="col-md-2 col-lg-3 col-xl-3"></div>
         <div class="col-md-10 col-lg-6 col-xl-6">
-            <h1 class="caption02 mx-auto" ><span style="background:#FEB225;color: white; padding: 0.5%">до ближайшего мероприятия осталось</span></h1>
+            <h1 class="caption02 text-center" ><span style="background:#FEB225;color: white; padding: 0.5%">до ближайшего мероприятия осталось</span></h1>
         </div>
         <div class="col-md-2  col-lg-3 col-xl-3"></div>
     </div>
@@ -938,7 +938,7 @@
     <div class="row ">
         <div class="col-md-2 col-lg-3 col-xl-3"></div>
         <div class="col-md-10 col-lg-6 col-xl-6">
-            <h1 class="caption02"><span style="background:#FEB225;color: white; padding: 0.5%">количество мест ограничено</span></h1>
+            <h1 class="caption02 text-center"><span style="background:#FEB225;color: white; padding: 0.5%">количество мест ограничено</span></h1>
         </div>
         <div class="col-md-2 col-lg-3 col-xl-3"></div>
     </div>
