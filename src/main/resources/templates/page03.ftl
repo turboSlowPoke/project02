@@ -949,7 +949,7 @@
                 <input id="seatsCount" type="hidden" name="seatsCount" value="${seatsCount}">
             </#if>
                 <div class="time-units">
-                    <ul class="flip dayPlayDozens">
+                    <ul class="flip seatPlayDozens">
                         <li>
                             <a href="#">
                                 <div class="up">
@@ -1071,7 +1071,7 @@
                             </a>
                         </li>
                     </ul>
-                    <ul class="flip dayPlayUnits">
+                    <ul class="flip seatPlayUnits">
                         <li>
                             <a href="#">
                                 <div class="up">

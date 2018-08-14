@@ -66,7 +66,7 @@
         <div class="card">
             <div class="card-header">Список мероприятий</div>
             <div class="card-body">
-                <table class="table">
+                <table class="table text-center">
                     <thead>
                     <tr>
                         <th>id</th>
@@ -76,6 +76,8 @@
                         <th>осталось мест</th>
                         <th>место проведения</th>
                         <th>статус</th>
+                        <th>действие</th>
+
                     </tr>
                     </thead>
                     <tbody ng-repeat="event in eventList">
@@ -87,6 +89,7 @@
                         <td>{{event.countSeats}}</td>
                         <td>{{event.place}}</td>
                         <td>{{event.status}}</td>
+                        <td><a ng-show="event.status==='ACTIVE'" href="" ng-click="stopEvent(event)">завершить</a></td>
                     </tr>
                     </tbody>
                 </table>
@@ -108,12 +111,12 @@
                         <th>телефон</th>
                         <th>статус номера</th>
                         <th>дата регистрации</th>
-                        <th>номер мероприятия</th>
+                        <th>id меро-я</th>
 
                     </tr>
                     </thead>
                     <tbody ng-repeat="user in userList">
-                    <tr>
+                    <tr id="{{user.id}}">
                         <td>{{user.id}}</td>
                         <td>{{user.name}}</td>
                         <td>{{user.phone }}</td>

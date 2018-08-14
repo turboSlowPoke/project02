@@ -11,7 +11,6 @@ import projects.project02.data_repository.UserRepository;
 import projects.project02.dto.frontend.AuthDataDTO;
 import projects.project02.dto.frontend.StatusResponseDTO;
 import projects.project02.dto.frontend.ConfirmSmsDTO;
-import projects.project02.dto.grecaptcha_api.ReCaptchaResponseDTO;
 import projects.project02.entyties.Event;
 import projects.project02.entyties.EventStatus;
 import projects.project02.entyties.User;
@@ -66,7 +65,7 @@ public class MainRestController {
             logger.warn("Некорректный телефон в запросе: " +authDataDTO.getName()+", пришло с ip: "+request.getRemoteAddr());
             throw new BadAuthDataRuntimeException();
         }
-        Optional<User> optionalUser = userRepository.findUserByPhoneOrEmail(authDataDTO.getPhone(),authDataDTO.getEmail());
+        Optional<User> optionalUser = userRepository.findUserByPhone(authDataDTO.getPhone());
         optionalUser.ifPresentOrElse(
                 user -> {
                     if (user.getStatus()== UserStatus.CONFIRMED) {

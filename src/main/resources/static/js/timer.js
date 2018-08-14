@@ -3,6 +3,7 @@ var countSeconds="59";
 var countMinutes="59";
 var countHours="15";
 var countDay="99";
+var countSeat = "99";
 
 $(document).ready(function () {
     if (typeof $('#timerMinutes').val() !== 'undefined'){
@@ -10,9 +11,10 @@ $(document).ready(function () {
         countHours=$('#timerHours').val();
         countDay=$('#timerDays').val();
     }
-    var countSeat = "99";
+    console.log("seatsCount="+$('#seatsCount').val());
     if (typeof $('#seatsCount').val() !== 'undefined'){
-        countSeat=$('#seatsCount').val();
+        countSeat=$('#seatsCount').val().toString();
+        console.log("countSeat="+countSeat);
     }
 
     for (var i=9;i>countSeconds.substr(1);i--){
@@ -27,7 +29,7 @@ $(document).ready(function () {
     for (var i=5;i>countMinutes.substr(0,1);i--){
         minutePlayDozens();
     }
-    for (var i=4;i>countHours.substr(1);i--){
+    for (var i=9;i>countHours.substr(1);i--){
         hourPlayUnits();
     }
     for (var i=2;i>countHours.substr(0,1);i--){

@@ -54,4 +54,16 @@ public class AdminRestController {
     public Iterable<User> getUserList(){
         return userRepository.findAll();
     }
+
+    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(value = "/admin/stop_event",method = RequestMethod.POST)
+    public Iterable<Event> stopEvent(@RequestBody Event event){
+        Optional<Event> eventForStoping = eventRepository.findById(event.getId());
+        eventForStoping.ifPresent(e -> {
+            e.setStatus(EventStatus.COMPLETED);
+            eventRepository.save(e);
+            logger.info("остановлено мероприятие "+event);
+        });
+        return  eventRepository.findAll();
+    }
 }

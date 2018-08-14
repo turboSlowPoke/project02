@@ -36,6 +36,17 @@ app.controller("mainController",function ($scope, $http) {
                 console.log(reason)
             });
     };
+    $scope.stopEvent = function (event) {
+        console.log(event);
+        $http.post('/admin/stop_event',event)
+            .then(function (response) {
+                $scope.eventList=response.data;
+            })
+            .catch(function (reason) {
+                console.log(reason);
+            });
+
+    }
 
 
     
