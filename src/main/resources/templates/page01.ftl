@@ -2,7 +2,8 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>не забивай на мечту</title>
+    <link rel="icon" href="images/bolt.png">
     <link rel="stylesheet" href="css/frameworks/bootstrap.min.css">
     <link rel="stylesheet" href="css/main.css">
     <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
